@@ -20,8 +20,7 @@ import {
 	paper: {
 	  padding: theme.spacing(2),
 	  textAlign: 'center',
-	  color: theme.palette.text.secondary,
-	},
+	  background: '#f8f9fa', },
   }));
 
 const Content = () => {
@@ -30,7 +29,7 @@ const Content = () => {
 	return (
 		<div className={classes.root}>
 		<Grid container spacing={3}>
-		   <Grid item xs={6}>
+		   <Grid item xs={4}>
 			
 				<DashCard
 					tit={L_DATA.loc} 
@@ -40,7 +39,9 @@ const Content = () => {
 
 			
 		  </Grid>
-		  <Grid item xs={6}>
+			<Grid item xs={4}></Grid>
+
+		  <Grid item xs={4}>
 					<DashCard
 						tit={R_DATA.loc} 
 						pop={R_DATA.pop} 
@@ -48,8 +49,11 @@ const Content = () => {
 					/>
 
 		 </Grid>
-		  <Grid item xs={12}>
-			<Paper className={classes.paper}>
+		  <Grid item xs={12}>			
+			<Paper className={classes.paper} elevation={3} >
+			<Typography variant="H5" component="p" align='Center'>    
+        	Positive cases in last three weeks
+			</Typography>
 			  <LineChart 
 						labs={M_DATA.dts} 
 						datal={L_DATA.tn}
@@ -61,7 +65,11 @@ const Content = () => {
 			</Paper>
           </Grid>  
 		  <Grid item xs={12}>
-			<Paper className={classes.paper}>
+		  
+			<Paper className={classes.paper} elevation={3} >
+			<Typography variant="H5" component="p" align='Center'>    
+        	Deaths Reported
+			</Typography>
 			  <LineChart 
 						labs={M_DATA.dts} 
 						datal={L_DATA.td}
@@ -73,7 +81,11 @@ const Content = () => {
 			</Paper>
           </Grid> 
 		  <Grid item xs={12}>
-			<Paper className={classes.paper}>
+			<Paper className={classes.paper} elevation={3}>
+			<Typography variant="H5" component="p" align='Center'>    
+    		Tests Admistered
+			</Typography>
+			
 			  <LineChart 
 						labs={M_DATA.dts} 
 						datal={L_DATA.tt}

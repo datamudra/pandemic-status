@@ -50,7 +50,7 @@ const options = {
                     ],
                     }; 
       return (
-          <div>
+          
                <Line data={data} options={options} />
           </ div>
       );
