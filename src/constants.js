@@ -9,7 +9,7 @@ export const M_DATA = {
    
 };
 export const L_DATA = {
-        "loc": "Himachal Pradesh, India19",
+        "loc": "Himachal Pradesh",
         "lv": 2,
         "tn": [
             385,
@@ -118,7 +118,7 @@ export const L_DATA = {
 
 export const R_DATA = 
 {
-    "loc": "India19",
+    "loc": "India",
     "lv": 1,
     "tn": [
         26834,

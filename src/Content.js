@@ -2,85 +2,91 @@ import React from "react";
 import DashCard from "./DashCard"
 import { Grid } from "@material-ui/core";
 import  LineChart  from "./linechart";
+import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+
 import {
 	M_DATA,
 	L_DATA,
 	R_DATA,
   } from './constants';
-  
+
+  const useStyles = makeStyles((theme) => ({
+	root: {
+	  flexGrow: 1,
+	},
+	paper: {
+	  padding: theme.spacing(2),
+	  textAlign: 'center',
+	  color: theme.palette.text.secondary,
+	},
+  }));
+
 const Content = () => {
-	
+	const classes = useStyles();
+
 	return (
-		<Grid container_spacing = {2}>
-		<Grid container spacing ={2}>
-			<Grid item xs={6}>
-				<DashCard 
+		<div className={classes.root}>
+		<Grid container spacing={3}>
+		   <Grid item xs={6}>
+			
+				<DashCard
 					tit={L_DATA.loc} 
-					pop={L_DATA.pop} 
+					pop={L_DATA.pop}
+					c_class = "left" 
 				/>
-			</Grid>
-			<Grid item xs={6}>
-				<DashCard 
-					tit={R_DATA.loc} 
-					pop={R_DATA.pop} 
-				/>
-			</Grid>	
-		</Grid>		
-		<Grid container spacing ={2}>
-			<Grid item xs={6}>
-				<LineChart 
-					labs={M_DATA.dts} 
-					datap={L_DATA.tn}
-					loc = {L_DATA.loc} 
-					tit={'Covid 19 +ve last 3 Weeks'} 
-				/>
-			</Grid>
-			<Grid item xs={6}>
-				<LineChart 
-						labs={M_DATA.dts} 
-						datap={R_DATA.tn}
-						loc = {R_DATA.loc} 
-						tit={'Covid 19 +ve last 3 Weeks'} 
+
+			
+		  </Grid>
+		  <Grid item xs={6}>
+					<DashCard
+						tit={R_DATA.loc} 
+						pop={R_DATA.pop} 
+						c_class = "right" 
 					/>
-			</Grid>			
-		</Grid>
-		<Grid container spacing ={2}>
-			<Grid item xs={6}>
-				<LineChart 
-					labs={M_DATA.dts} 
-					datap={L_DATA.td}
-					loc = {L_DATA.loc} 
-					tit={'Deaths last 3 Weeks'} 
-				/>
-			</Grid>
-			<Grid item xs={6}>
-				<LineChart 
+
+		 </Grid>
+		  <Grid item xs={12}>
+			<Paper className={classes.paper}>
+			  <LineChart 
 						labs={M_DATA.dts} 
-						datap={R_DATA.td}
-						loc = {R_DATA.loc} 
-						tit={'Deaths last 3 Weeks'} 
+						datal={L_DATA.tn}
+						datar= {R_DATA.tn}
+						locl = {L_DATA.loc}
+						locr = {R_DATA.loc} 
+			          			tit={'Covid 19 +ve last 3 Weeks'} 
 					/>
-			</Grid>			
-		</Grid>
-		<Grid container spacing ={2}>
-			<Grid item xs={6}>
-				<LineChart 
-					labs={M_DATA.dts} 
-					datap={L_DATA.tt}
-					loc = {L_DATA.loc} 
-					tit={'Tests last 3 Weeks'} 
-				/>
-			</Grid>
-			<Grid item xs={6}>
-				<LineChart 
+			</Paper>
+          </Grid>  
+		  <Grid item xs={12}>
+			<Paper className={classes.paper}>
+			  <LineChart 
 						labs={M_DATA.dts} 
-						datap={R_DATA.tt}
-						loc = {R_DATA.loc} 
-						tit={'Test last 3 Weeks'} 
+						datal={L_DATA.td}
+						datar= {R_DATA.td}
+						locl = {L_DATA.loc}
+						locr = {R_DATA.loc} 
+						tit={'Covid 19 deaths last 3 Weeks'} 
 					/>
-			</Grid>			
+			</Paper>
+          </Grid> 
+		  <Grid item xs={12}>
+			<Paper className={classes.paper}>
+			  <LineChart 
+						labs={M_DATA.dts} 
+						datal={L_DATA.tt}
+						datar= {R_DATA.tt}
+						locl = {L_DATA.loc}
+						locr = {R_DATA.loc} 
+						tit={'Covid 19 testing last 3 Weeks'} 
+					/>
+			</Paper>
+          </Grid> 
 		</Grid>
-		</Grid>
+	  </div>
+		
 );
 };
 

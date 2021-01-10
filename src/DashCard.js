@@ -12,8 +12,10 @@ const useStyles = makeStyles({
     margin: '0 2px',
     transform: 'scale(0.8)',
   },
+  right : { backgroundColor : 'rgb(54, 162, 235)'},
+  left : { backgroundColor : 'rgb(255, 99, 132)'},
   title: {
-    fontSize: 14,
+    fontSize: 25
   },
   pos: {
     marginBottom: 12,
@@ -21,18 +23,18 @@ const useStyles = makeStyles({
 });
 
 const DashCard = props => {
-  const { tit, pop} = props;
+  const { tit, pop, c_class} = props;
 	const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Card>
-      <CardContent>
+    <Card className={classes[c_class]}>
+      <CardContent >
         <Typography className={classes.title}  gutterBottom>
           Current Status
         </Typography>
-        <Typography variant="h5" component="h2">
-          {bull}{tit}
+        <Typography variant="h5" component="h2" align = 'center'>
+          {bull}{tit}{bull}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">    
         </Typography>
