@@ -12,6 +12,7 @@ import {
 	L_DATA,
 	R_DATA,
   } from './constants';
+import CurrentWeek from "./CurrentWeek";
 
   const useStyles = makeStyles((theme) => ({
 	root: {
@@ -20,7 +21,7 @@ import {
 	paper: {
 	  padding: theme.spacing(2),
 	  textAlign: 'center',
-	  background: '#f8f9fa', },
+	 },
   }));
 
 const Content = () => {
@@ -28,7 +29,9 @@ const Content = () => {
 
 	return (
 		<div className={classes.root}>
-		<Grid container spacing={3}>
+		<CurrentWeek left={L_DATA} right = {R_DATA} />
+		<Grid container spacing={2}>
+		
 		   <Grid item xs={4}>
 			
 				<DashCard
@@ -36,10 +39,20 @@ const Content = () => {
 					pop={L_DATA.pop}
 					c_class = "left" 
 				/>
-
 			
 		  </Grid>
-			<Grid item xs={4}></Grid>
+			<Grid item xs={4}>
+			<br/>
+			<Paper className={classes.paper} elevation={2} >
+			<Typography variant="H5" component="p" align='Center'>    
+        	Trends By Population</Typography>
+			<Typography>
+			(Last 21 Days)
+			</Typography>
+			
+			</Paper>
+
+			</Grid>
 
 		  <Grid item xs={4}>
 					<DashCard
@@ -52,15 +65,15 @@ const Content = () => {
 		  <Grid item xs={12}>			
 			<Paper className={classes.paper} elevation={3} >
 			<Typography variant="H5" component="p" align='Center'>    
-        	Positive cases in last three weeks
+        	Covid 19 Daily New Cases Per Million Population
 			</Typography>
 			  <LineChart 
 						labs={M_DATA.dts} 
-						datal={L_DATA.tn}
-						datar= {R_DATA.tn}
+						datal={L_DATA.tmn}
+						datar= {R_DATA.tmn}
 						locl = {L_DATA.loc}
 						locr = {R_DATA.loc} 
-			          			tit={'Covid 19 +ve last 3 Weeks'} 
+			          	tit={'Covid 19 New Cases'} 
 					/>
 			</Paper>
           </Grid>  
@@ -68,37 +81,37 @@ const Content = () => {
 		  
 			<Paper className={classes.paper} elevation={3} >
 			<Typography variant="H5" component="p" align='Center'>    
-        	Deaths Reported
+        	Covid 19 Daily Deaths Per Million Population
 			</Typography>
 			  <LineChart 
 						labs={M_DATA.dts} 
-						datal={L_DATA.td}
-						datar= {R_DATA.td}
+						datal={L_DATA.tmd}
+						datar= {R_DATA.tmd}
 						locl = {L_DATA.loc}
 						locr = {R_DATA.loc} 
-						tit={'Covid 19 deaths last 3 Weeks'} 
+						tit={'Covid 19 Deaths'} 
 					/>
 			</Paper>
           </Grid> 
 		  <Grid item xs={12}>
 			<Paper className={classes.paper} elevation={3}>
 			<Typography variant="H5" component="p" align='Center'>    
-    		Tests Admistered
+    		Covid 19 Daily Tests Per Million Population
 			</Typography>
 			
 			  <LineChart 
 						labs={M_DATA.dts} 
-						datal={L_DATA.tt}
-						datar= {R_DATA.tt}
+						datal={L_DATA.tmt}
+						datar= {R_DATA.tmt}
 						locl = {L_DATA.loc}
 						locr = {R_DATA.loc} 
-						tit={'Covid 19 testing last 3 Weeks'} 
+						tit={'Covid 19 Tests'} 
 					/>
 			</Paper>
           </Grid> 
 		</Grid>
 	  </div>
-		
+	
 );
 };
 

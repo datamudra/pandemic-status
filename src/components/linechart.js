@@ -14,7 +14,7 @@ const options = {
                     type: 'linear', display: true, position: 'left', id: 'yx1',
                     ticks:{ beginAtZero: true, autoSkip: true, maxTicksLimit: 4},
                 },
-                {   type: 'linear', display: true, position: 'right', id: 'yx2', gridLines: {drawOnArea: false} ,
+                {   type: 'linear', display: false, position: 'right', id: 'yx2', gridLines: {drawOnArea: false} ,
                     ticks: { beginAtZero: true, autoSkip: true, maxTicksLimit: 4 }
                 }
                 ],      
@@ -45,14 +45,14 @@ const options = {
                         fill: false,
                         backgroundColor: 'rgb(54, 162, 235)',
                         borderColor: 'rgba(54, 162, 235, 0.2)',
-                        yAxisID: 'yx2',
+                        yAxisID: 'yx1',
                         },
                     ],
                     }; 
       return (
           
                <Line data={data} options={options} />
-          </ div>
+          
       );
   }; 
 

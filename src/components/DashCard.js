@@ -37,7 +37,6 @@ const DashCard = props => {
         <Typography variant="h5" component="h2" align = 'center'>
           {tit} = <TimelineRoundedIcon className={classes[c_class]}  />  
         </Typography>
-        
       </CardContent>
     </Card>
     </div>
