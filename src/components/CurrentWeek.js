@@ -60,22 +60,8 @@ const DeltaValue = (props) => {
 
 	return (
             <div>
-                 <br />
-                
-                 <Accordion defaultExpanded>
-                     <AccordionSummary 
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                      >
-                <Grid item xs= {12}>
-                        <Typography >
-                            Last 7 Days Totals (Per Million Population)
-                        </Typography>
-                </Grid> 
-                </AccordionSummary>
-                <Divider />  
-                <AccordionDetails>
+                <br />
+               
                 <Grid container direction='row' > 
                  
                     <Grid item xs={3} >   
@@ -159,12 +145,7 @@ const DeltaValue = (props) => {
                             </Paper>
                         </Grid>
                     </ Grid>
-                    </ AccordionDetails>
-                        
-               </ Accordion>
-                       
-                    
-            </div>
+             </div>      
 
 );
 };

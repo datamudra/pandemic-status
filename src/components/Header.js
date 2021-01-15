@@ -5,10 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 
 const useStyles = makeStyles(() => ({
-	typographyStyles: {
-		flex: 1
-	}
-
+	root: {
+			 justifyContent: 'space-between'
+				},
 }));
 
 const Header = () => {
@@ -16,10 +15,10 @@ const Header = () => {
 
 	return(
 		<AppBar position='static'>
-		<Toolbar>
-		<Typography className ={classes.typographyStyles}> Datamudra </Typography>
-		<Typography className ={classes.typographyStyles}>Current COVID-19 Status</Typography>
-		<DataUsageIcon />
+		<Toolbar className={classes.root} >
+		<Typography className ={classes.barItems}> Datamudra </Typography>
+		<Typography className ={classes.barTit}>Covid 19 Comparer</Typography>
+				<DataUsageIcon className={classes.barItems} />
 		</Toolbar>
 		</AppBar>
 
