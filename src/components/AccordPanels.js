@@ -9,9 +9,11 @@ import CurrentWeek from "./CurrentWeek";
 import Trend21 from "./trend21";
 import AllTime from "./alltime";
 import Demographics from "./demographics";
+import CurrentWeekCards from "./CurrentWeekCards";
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        justifyContent: 'flex-end',
         width: '100%',
     },
     heading: {
@@ -25,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow : 2,
         textAlign : 'right'
     },
-    root: { justifyContent: 'flex-end' }
+   
 }));
 
 
@@ -51,7 +53,7 @@ const AccordPanels = (props) => {
                     <Typography className={classes.secondaryHeading}>(figures per million people)</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <CurrentWeek left={left} right={right} />
+                    <CurrentWeekCards l={left} r={right} />
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -66,7 +68,7 @@ const AccordPanels = (props) => {
           </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Trend21 left={left} right={right} meta={meta} />
+                    <Trend21 l={left} r={right} m={meta} />
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -81,7 +83,7 @@ const AccordPanels = (props) => {
           </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <AllTime left={left} right={right} meta={meta} />
+                    <AllTime l={left} r={right} m={meta} />
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>

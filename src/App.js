@@ -1,8 +1,6 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import Header from "./components/Header";
-import CurrentWeek from "./components/CurrentWeek";
-import Trend21 from "./components/trend21";
 import { makeStyles } from '@material-ui/core/styles';
 
 import {
@@ -10,8 +8,6 @@ import {
   L_DATA,
   R_DATA,
 } from './components/constants';
-import AllTime from "./components/alltime";
-import Demographics from "./components/demographics";
 import AccordPanels from "./components/AccordPanels";
 
 

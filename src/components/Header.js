@@ -17,7 +17,7 @@ const Header = () => {
 		<AppBar position='static'>
 		<Toolbar className={classes.root} >
 		<Typography className ={classes.barItems}> Datamudra </Typography>
-		<Typography className ={classes.barTit}>Covid 19 Comparer</Typography>
+		<Typography className ={classes.barTit}>Covid-19 Status Comparison Tool</Typography>
 				<DataUsageIcon className={classes.barItems} />
 		</Toolbar>
 		</AppBar>

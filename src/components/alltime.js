@@ -1,58 +1,38 @@
-import { Grid, Paper, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import React from 'react';
-import LineChart from "./linechart";
-import { makeStyles } from '@material-ui/core/styles';
+import DashCard from './DashCard';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        //   flexGrow: 1,
-    },
-    paper: {
-         padding: theme.spacing(2),
-        textAlign: 'center',
-    },
-    details: { backgroundColor: '#6c757d10' }
-}));
 
 const AllTime = (props) => {
 
-    const { left, right, meta } = props;
-    const classes = useStyles();
-
+    const { l, r, m } = props;
+    
     return (
-            
-        <Grid container direction='row'>
+            <Grid container direction='row' >
             <Grid item xs={12} sm={6} >
-                <Paper className={classes.paper} elevation={3} >
-                    <Typography component="p" align='Center'>
-                        Active Cases
-                    </Typography>
-                    <LineChart
-                        labs={meta.dts}
-                        datal={left.tma}
-                        datar={right.tma}
-                        locl={left.loc}
-                        locr={right.loc}
-                        tit={'Covid 19 Active Cases'}
-                    />
-                </Paper>
+               <DashCard t='Positive Cases' 
+                        ll={l.loc} 
+                        rl={r.loc} 
+                        rs={r.amn}
+                        ls={l.amn}
+                        isd={false} /* ld={-10}  rd={14} isd={true} *//> 
             </Grid>
             <Grid item xs={12} sm={6} >
-                <Paper className={classes.paper} elevation={3} >
-                    <Typography component="p" align='Center'>
-                        New Cases
-                    </Typography>
-                <LineChart
-                        labs={meta.dts}
-                        datal={left.tmn}
-                        datar={right.tmn}
-                        locl={left.loc}
-                        locr={right.loc}
-                        tit={'Covid 19 New Cases'}
-                    />
-                </Paper>
+                <DashCard t='Deaths'
+                    ll={l.loc}
+                    rl={r.loc}
+                    rs={r.amd}
+                    ls={l.amd}
+                    isd={false} /* ld={-10}  rd={14} isd={true} */ />
+            </Grid><Grid item xs={12} sm={6} >
+                <DashCard t='Tests'
+                    ll={l.loc}
+                    rl={r.loc}
+                    rs={r.amt}
+                    ls={l.amt}
+                    isd={false} /* ld={-10}  rd={14} isd={true} */ />
             </Grid>
-        </Grid>            
+           </Grid> 
 
     );
 };

@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
 
 const Trend21 = (props) => {
       
-    const { left, right , meta } = props;
+    const  {l, r ,m} = props;
     const classes = useStyles();
 
     return (
@@ -28,11 +28,11 @@ const Trend21 = (props) => {
 				Active Cases
 				</Typography>
 				<LineChart 
-							labs={meta.dts} 
-							datal={left.tma}
-							datar= {right.tma}
-							locl = {left.loc}
-							locr = {right.loc} 
+							labs={m.dts} 
+							datal= {l.tma}
+							datar= {r.tma}
+							locl =  {l.loc}
+							locr = {r.loc} 
 							tit={'Covid 19 Active Cases'} 
 						/>
 				</Paper>
@@ -43,11 +43,11 @@ const Trend21 = (props) => {
 								New Cases
 				</Typography>
 							<LineChart
-								labs={meta.dts}
-								datal={left.tmn}
-								datar={right.tmn}
-								locl={left.loc}
-								locr={right.loc}
+								labs={m.dts}
+								datal= {l.tmn}
+								datar={r.tmn}
+								locl= {l.loc}
+								locr={r.loc}
 								tit={'Covid 19 New Cases'}
 							/>
 						</Paper>
@@ -59,11 +59,11 @@ const Trend21 = (props) => {
 				Deaths
 				</Typography>
 				<LineChart 
-							labs={meta.dts} 
-							datal={left.tmd}
-							datar= {right.tmd}
-							locl = {left.loc}
-							locr = {right.loc} 
+							labs={m.dts} 
+							datal= {l.tmd}
+							datar= {r.tmd}
+							locl =  {l.loc}
+							locr = {r.loc} 
 							tit={'Covid 19 Deaths'} 
 						/>
 				</Paper>
@@ -74,11 +74,11 @@ const Trend21 = (props) => {
 				Tests
 				</Typography>				
 				<LineChart 
-							labs={meta.dts} 
-							datal={left.tmt}
-							datar= {right.tmt}
-							locl = {left.loc}
-							locr = {right.loc} 
+							labs={m.dts} 
+							datal= {l.tmt}
+							datar= {r.tmt}
+							locl =  {l.loc}
+							locr = {r.loc} 
 							tit={'Covid 19 Tests'} 
 						/>
 				</Paper>

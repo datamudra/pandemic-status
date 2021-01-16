@@ -3,13 +3,8 @@ import { Grid, Box } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Divider from '@material-ui/core/Divider';
 
-const useStyles = makeStyles((theme) => ({	
+const useStyles = makeStyles(() => ({	
     root: {
 	//   flexGrow: 1,
 	},
@@ -54,8 +49,8 @@ const DeltaValue = (props) => {
     };
 
     
-    const CurrentWeek = (props) => {
-    const { left, right } = props;
+    const CurrentWeekGrid = (props) => {
+    const { l, r } = props;
 	const classes = useStyles();
 
 	return (
@@ -80,7 +75,6 @@ const DeltaValue = (props) => {
                         </Typography> 
                         </Paper>
                     </ Grid>
-
                     <Grid item xs={3} >
                         <Paper className={classes.mrow} variant='outlined' square={true}>                        
                         <Typography>
@@ -91,56 +85,56 @@ const DeltaValue = (props) => {
                         <Grid item xs={3}>
                         <Paper className={classes.lrow} variant='outlined' square={true}>                                               
                         <Typography >
-                             {left.loc} 
+                             {l.loc} 
                             </Typography> 
                             </Paper>
                         </Grid>
                         <Grid item xs={3}>
                             <Paper className={classes.lrow} variant='outlined' square={true}> 
                             <Typography>
-                                {left.wmn}  <DeltaValue className={classes.ldelta} delta={left.wmd} deltaf='ldelta' />
+                                {l.wmn}  <DeltaValue className={classes.ldelta} delta={l.wmd} deltaf='ldelta' />
                             </Typography>
                             </Paper>
                         </Grid>
                         <Grid item xs={3}>
                             <Paper className={classes.lrow} variant='outlined' square={true}>
                             <Typography>
-                                {left.wmd}  <DeltaValue delta={left.wdd} deltaf='ldelta' />
+                                {l.wmd}  <DeltaValue delta={l.wdd} deltaf='ldelta' />
                             </Typography>                         
                             </Paper>
                         </Grid>
                         <Grid item xs={3}>
                             <Paper className={classes.lrow} variant='outlined' square={true}>                         
                             <Typography>
-                                {left.wmt}  <DeltaValue delta={left.wdt} deltaf='ldelta' />
+                                {l.wmt}  <DeltaValue delta={l.wdt} deltaf='ldelta' />
                             </Typography>
                             </Paper>
                         </Grid>
                         <Grid item xs={3}>
                         <Paper className={classes.rrow} variant='outlined' square={true}>                                               
                         <Typography >
-                             {right.loc} 
+                             {r.loc} 
                             </Typography> 
                             </Paper>
                         </Grid>
                         <Grid item xs={3}>
                             <Paper className={classes.rrow} variant='outlined' square={true}> 
                             <Typography >
-                                {right.wmn}  <DeltaValue delta={right.wdn} deltaf='rdelta' />
+                                {r.wmn}  <DeltaValue delta={r.wdn} deltaf='rdelta' />
                             </Typography>
                             </Paper>
                         </Grid>
                         <Grid item xs={3}>
                             <Paper className={classes.rrow} variant='outlined' square={true}>
                             <Typography >
-                                {right.wmd}  <DeltaValue delta={right.wdd} deltaf='rdelta' />
+                                {r.wmd}  <DeltaValue delta={r.wdd} deltaf='rdelta' />
                             </Typography>                         
                             </Paper>
                         </Grid>
                         <Grid item xs={3}>
                             <Paper className={classes.rrow} variant='outlined' square={true}>                         
                             <Typography >
-                                {right.wmt}  <DeltaValue delta={right.wdt} deltaf='rdelta' />
+                                {r.wmt}  <DeltaValue delta={r.wdt} deltaf='rdelta' />
                             </Typography>
                             </Paper>
                         </Grid>
@@ -150,4 +144,4 @@ const DeltaValue = (props) => {
 );
 };
 
-export default CurrentWeek;
+export default CurrentWeekGrid;
