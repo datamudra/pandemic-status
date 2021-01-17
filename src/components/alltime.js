@@ -8,7 +8,7 @@ const AllTime = (props) => {
     const { l, r, m } = props;
     
     return (
-            <Grid container direction='row' >
+        <Grid container direction='row' spacing={1} >
             <Grid item xs={12} sm={6} >
                <DashCard t='Positive Cases' 
                         ll={l.loc} 
@@ -24,7 +24,8 @@ const AllTime = (props) => {
                     rs={r.amd}
                     ls={l.amd}
                     isd={false} /* ld={-10}  rd={14} isd={true} */ />
-            </Grid><Grid item xs={12} sm={6} >
+            </Grid>
+            <Grid item xs={12} sm={6} >
                 <DashCard t='Tests'
                     ll={l.loc}
                     rl={r.loc}
@@ -32,7 +33,15 @@ const AllTime = (props) => {
                     ls={l.amt}
                     isd={false} /* ld={-10}  rd={14} isd={true} */ />
             </Grid>
-           </Grid> 
+            <Grid item xs={12} sm={6} >
+                <DashCard t='Deathrate (%)'
+                    ll={l.loc}
+                    rl={r.loc}
+                    rs={r.adr}
+                    ls={l.adr}
+                    isd={false} /* ld={-10}  rd={14} isd={true} */ />
+            </Grid>
+        </Grid> 
 
     );
 };

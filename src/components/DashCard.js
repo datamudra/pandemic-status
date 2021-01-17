@@ -3,13 +3,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import InfoIcon from '@material-ui/icons/Info';
 import { Box, Grid, Paper } from '@material-ui/core';
-
+import { spacing } from '@material-ui/system';
 const useStyles = makeStyles((theme) => ({
   root: {
-    //   flexGrow: 1,
-  },
+      padding: 0,
+      '&:last-child': {
+        paddingBottom: 0,
+      },
+    },
   lrow: {
     textAlign: 'center',
     backgroundColor: '#dc354520',
@@ -36,20 +38,23 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 10,
   },
   
+  
 }));
 
 const DV = (props) => {
   const { d, dc } = props;
   const classes = useStyles();
 
-  return (<Box component="span" className={classes[dc]} >
-    <Box component="span" className={classes.arrow} >
+  return (
+    <Box component="span" className={classes[dc]} >
+      <Box component="span" className={classes.arrow} >
       {d > 0
-        ? '\u25B2'
+        ? '\u25B2' + Math.abs(d)+'%'
         : d < 0
-          ? '\u25BC'
+          ? '\u25BC' + Math.abs(d)+'%'
           : ''}
-    </Box>{d === 0 ? '' : Math.abs(d)}%</Box>
+      </Box>
+    </Box>
   );
 };
 
@@ -60,9 +65,9 @@ const DashCard = props => {
 
   return (
   <div>
-    <Card /* raised={true} */>
-      <CardContent>
-           <Grid container direction='row' >
+    <Card /* raised={true} */  >
+        <CardContent className={classes.root}>
+           <Grid container direction='row'  >
            <Grid item xs={12} >
               <Paper className={classes.mrow} variant='outlined' square={true}>
                 <Typography>

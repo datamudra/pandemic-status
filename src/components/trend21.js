@@ -21,7 +21,7 @@ const Trend21 = (props) => {
     const classes = useStyles();
 
     return (
- 		  <Grid container direction='row'>
+		<Grid container direction='row' spacing={1}>
 			<Grid item xs={12} sm={6} >			
 				<Paper className={classes.paper} elevation={3} >
 				<Typography component="p" align='Center'>    

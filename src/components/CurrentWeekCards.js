@@ -8,7 +8,7 @@ const CurrentWeekCards = (props) => {
     const { l, r} = props;
 
     return (
-        <Grid container direction='row' >
+        <Grid container direction='row' spacing={1} >
             <Grid item xs={12} sm={6} >
                 <DashCard t='Positive Cases'
                     ll={l.loc}

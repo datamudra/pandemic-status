@@ -20,9 +20,13 @@ const Demographics = (props) => {
     const classes = useStyles();
 
     return (
-       <div />
-
-    );
+       <div>
+            <Typography> We the people </Typography>
+            <Typography> For the people </Typography>
+            <Typography> By the people </Typography>
+            <Typography> Only the people </Typography>
+        </div>
+            );
 };
 
 export default Demographics;

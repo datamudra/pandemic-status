@@ -57,7 +57,7 @@ const DeltaValue = (props) => {
             <div>
                 <br />
                
-                <Grid container direction='row' > 
+                <Grid container direction='row' spacing = {2}> 
                  
                     <Grid item xs={3} >   
                     </Grid>

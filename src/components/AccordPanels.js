@@ -5,29 +5,25 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import CurrentWeek from "./CurrentWeek";
 import Trend21 from "./trend21";
 import AllTime from "./alltime";
 import Demographics from "./demographics";
 import CurrentWeekCards from "./CurrentWeekCards";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        justifyContent: 'flex-end',
-        width: '100%',
-    },
-    heading: {
+   heading: {
         fontSize: theme.typography.pxToRem(15),
-         flexBasis: '33.33%',
-         flexShrink: 0,
+        flexBasis: '33.33%',
+        flexShrink: 0,
     },
     secondaryHeading: {
         fontSize: theme.typography.pxToRem(15),
         color: theme.palette.text.secondary,
-        flexGrow : 2,
-        textAlign : 'right'
+        flexGrow: 2,
+        textAlign: 'right'
     },
-   
+    root: { justifyContent: 'flex-end' },
+    width: '100%',
 }));
 
 
@@ -35,7 +31,7 @@ const AccordPanels = (props) => {
 
     const { left, right, meta } = props;
     const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
+    const [expanded, setExpanded] = React.useState('panel1');
 
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
