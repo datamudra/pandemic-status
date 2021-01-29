@@ -1,7 +1,6 @@
 import React from "react";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Trend21 from "./trend21";
 import AllTime from "./alltime";
 import Demographics from "./demographics";
@@ -13,7 +12,6 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
-import SwipeableViews from 'react-swipeable-views';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -44,7 +42,7 @@ TabPanel.propTypes = {
 function a11yProps(index) {
     return {
         id: `full-width-tab-${index}`,
-        'aria-controls': `full-width-tabpanel-${index}`,
+        'aria-controls': `full-tabs-${index}`,
     };
 }
 const useStyles = makeStyles((theme) => ({
@@ -59,10 +57,11 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 2,
         textAlign: 'right'
     },
-    root: { justifyContent: 'flex-end' },
+    root: { flex : 1, color : 'transparent'
+         },
+    tabsu: { borderBottom: '1px solid #9e9e9e',}
   
 }));
-
 
 const TabPanels = (props) => {
 
@@ -75,33 +74,26 @@ const TabPanels = (props) => {
         setValue(newValue);
     };
 
-    const handleChangeIndex = (index) => {
-        setValue(index);
-    };
-
+   
     return (
-        <div className={classes.root}>
-            <AppBar position="static" color="default">
-                <Tabs
+    <div>
+       <AppBar position="static" color="transparent" elevation={0}>
+                <Tabs className={classes.tabsu}
                     value={value}
                     onChange={handleChange}
                     indicatorColor="primary"
                     textColor="primary"
                     variant="fullWidth"
-                    aria-label="full width tabs example"
+                    centred
+                    aria-label="full tabs"
                 >
                     <Tab label="This Week" {...a11yProps(0)} />
                     <Tab label="3 Week Trends" {...a11yProps(1)} />
                     <Tab label="Full History" {...a11yProps(2)} />
-                    <Tab label="The People" {...a11yProps(3)} />
+                      <Tab label="The People" {...a11yProps(3)} /> 
                 </Tabs>
             </AppBar>
-       
-            <SwipeableViews
-                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                index={value}
-                onChangeIndex={handleChangeIndex}
-            >
+  
                 <TabPanel value={value} index={0} dir={theme.direction}>
                     <CurrentWeekCards l={left} r={right} />
                 </TabPanel>
@@ -111,10 +103,9 @@ const TabPanels = (props) => {
                 <TabPanel value={value} index={2} dir={theme.direction}>
                     <AllTime l={left} r={right} m={meta} />
                 </TabPanel>
-                <TabPanel value={value} index={3} dir={theme.direction}>
-                    <Demographics left={left} right={right} meta={meta} />
-                </TabPanel>
-            </SwipeableViews>
+                 <TabPanel value={value} index={3} dir={theme.direction}>
+                    <Demographics l={left} r={right} m={meta} />
+                </TabPanel> 
         </div>
     );
 }

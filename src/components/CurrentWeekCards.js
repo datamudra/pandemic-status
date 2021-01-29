@@ -15,7 +15,7 @@ const CurrentWeekCards = (props) => {
                     rl={r.loc}
                     rs={r.wmn}
                     ls={l.wmn}
-                    ld={l.wmd}  rd={r.wmd} isd={true} />
+                    ld={l.wdn}  rd={r.wdn} isd={true} />
             </Grid>
             <Grid item xs={12} sm={6} >
                 <DashCard t='Deaths'

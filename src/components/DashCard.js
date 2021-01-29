@@ -3,8 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { Box, Grid, Paper } from '@material-ui/core';
-import { spacing } from '@material-ui/system';
+import { Box, Grid, Paper } from '@material-ui/core'; 
+
+const numberFormatter = new Intl.NumberFormat('en-US', {
+  maximumFractionDigits: 1, minimumFractionDigits: 0,
+});
+
 const useStyles = makeStyles((theme) => ({
   root: {
       padding: 0,
@@ -14,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
   lrow: {
     textAlign: 'center',
-    backgroundColor: '#dc354520',
+    backgroundColor: '#fbe5e7',
     color: '#ff6384',
     fontSize: 18
   },
@@ -23,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   rrow: {
     textAlign: 'center',
-    backgroundColor: '#4c75f210',
+    backgroundColor: '#f4f6ff',
     color: '#36a2eb',
     fontSize: 18,
   },
@@ -59,10 +63,9 @@ const DV = (props) => {
 };
 
 const DashCard = props => {
-  const { t, ll, rl, rs, ls, rd, ld, isd} = props;
+  const { t, ll, rl, rs, ls, rd, ld, isd, isp=false, isb=false} = props;
 	const classes = useStyles();
-  const bull = <span> • </span>;
-
+  
   return (
   <div>
     <Card /* raised={true} */  >
@@ -78,14 +81,14 @@ const DashCard = props => {
             <Grid item xs={6} >
               <Paper className={classes.lrow} variant='outlined' square={true}>
                 <Typography >
-                  {ll}
+                  {ll} 
                 </Typography>
               </Paper>
             </Grid>
             <Grid item xs={6}>
               <Paper className={classes.lrow} variant='outlined' square={true}>
                 <Typography>
-                  {ls}  {isd 
+                  {numberFormatter.format(ls)} {isp ? '%' : ''}  {isd 
                           ? <DV className={classes.ld} d={ld} dc='ldc' />
                           : ''}
                 </Typography>
@@ -94,14 +97,14 @@ const DashCard = props => {
             <Grid item xs={6} >
               <Paper className={classes.rrow} variant='outlined' square={true}>
                 <Typography >
-                  {rl}
+                  {rl} 
                 </Typography>
               </Paper>
             </Grid>
             <Grid item xs={6}>
               <Paper className={classes.rrow} variant='outlined' square={true}>
                 <Typography>
-                  {rs}  {isd
+                  {numberFormatter.format(rs)} {isp ? '%' : ''} {isd
                     ? <DV className={classes.rd} d={rd} dc='rdc' />
                     : ''}
                 </Typography>

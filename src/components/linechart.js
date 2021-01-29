@@ -5,9 +5,9 @@ const options = {
     legend: { position: 'right', display : false},
     title: {
         display: false,
-        text: 'Bring out the dead',
-        position: 'top'
-    },
+    //     text: '',
+    //     position: 'top'
+     },
     scales: {
         yAxes:[
                 {

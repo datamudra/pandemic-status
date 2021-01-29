@@ -15,7 +15,7 @@ const AllTime = (props) => {
                         rl={r.loc} 
                         rs={r.amn}
                         ls={l.amn}
-                        isd={false} /* ld={-10}  rd={14} isd={true} *//> 
+                        isd={false}/> 
             </Grid>
             <Grid item xs={12} sm={6} >
                 <DashCard t='Deaths'
@@ -23,7 +23,7 @@ const AllTime = (props) => {
                     rl={r.loc}
                     rs={r.amd}
                     ls={l.amd}
-                    isd={false} /* ld={-10}  rd={14} isd={true} */ />
+                    isd={false} />
             </Grid>
             <Grid item xs={12} sm={6} >
                 <DashCard t='Tests'
@@ -31,15 +31,16 @@ const AllTime = (props) => {
                     rl={r.loc}
                     rs={r.amt}
                     ls={l.amt}
-                    isd={false} /* ld={-10}  rd={14} isd={true} */ />
+                    isd={false}  />
             </Grid>
             <Grid item xs={12} sm={6} >
-                <DashCard t='Deathrate (%)'
+                <DashCard t='Deathrate'
                     ll={l.loc}
                     rl={r.loc}
                     rs={r.adr}
                     ls={l.adr}
-                    isd={false} /* ld={-10}  rd={14} isd={true} */ />
+                    isd={false} 
+                    isp={true}/>
             </Grid>
         </Grid> 
 
