@@ -1,5 +1,6 @@
 {
     "files.watcherExclude": {
         "**/public/**": true
-    }
+    },
+    "git.ignoreLimitWarning": true
 }
