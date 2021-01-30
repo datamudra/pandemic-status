@@ -14,9 +14,9 @@ import {
 
 
 //  const API_ROOT_URL = 'https://github.com/datamudra/api/raw/master';
-// const API_ROOT_URL = 'https://raw.githubusercontent.com/datamudra/api/master';
+const API_ROOT_URL = 'https://raw.githubusercontent.com/datamudra/api/master';
 
- const API_ROOT_URL = 'http://192.168.43.247:3000/api';
+// const API_ROOT_URL = 'http://192.168.43.247:3000/api';
 
 
 const useStyles = makeStyles((theme) => ({
