@@ -5,9 +5,7 @@ const options = {
     legend: { position: 'right', display : false},
     title: {
         display: false,
-    //     text: '',
-    //     position: 'top'
-     },
+      },
     scales: {
         yAxes:[
                 {

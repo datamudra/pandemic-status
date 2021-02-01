@@ -1,15 +1,11 @@
 import { Grid, Paper, Typography } from '@material-ui/core';
 import React from 'react';
-import LineChart from "./linechart";
+import LineChart from "./LineChart";
 import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles(() => ({
-    root: {
-        //   flexGrow: 1,
-    },
-    paper: {
-        // padding: theme.spacing(0),
+   paper: {
         textAlign: 'center',
     },
 	details: { backgroundColor: '#6c757d10' }
@@ -22,25 +18,15 @@ const Trend21 = (props) => {
 
     return (
 		<Grid container direction='row' spacing={1}>
-			<Grid item xs={12} sm={6} >			
-				<Paper className={classes.paper} elevation={3} >
-				<Typography component="p" align='Center'>    
-				Active Cases
-				</Typography>
-				<LineChart 
-							labs={m.dts} 
-							datal= {l.tma}
-							datar= {r.tma}
-							locl =  {l.loc}
-							locr = {r.loc} 
-							tit={'Covid 19 Active Cases'} 
-						/>
-				</Paper>
-			</Grid>  
-			<Grid item xs={12} sm={6} >
+			<Grid item xs={12}>
+				<Typography align='center'>
+					Numbers are totals per million population
+                </Typography>
+			</Grid>
+		<Grid item xs={12} sm={6} >
 						<Paper className={classes.paper} elevation={3} >
 							<Typography component="p" align='Center'>
-								New Cases
+								Confirmed Cases
 				</Typography>
 							<LineChart
 								labs={m.dts}
@@ -71,14 +57,14 @@ const Trend21 = (props) => {
 			<Grid item xs={12} sm={6}>
 				<Paper className={classes.paper} elevation={3}>
 				<Typography  component="p" align='Center'>    
-				Tests
+				Vaccinations (Country Level)
 				</Typography>				
 				<LineChart 
 							labs={m.dts} 
-							datal= {l.tmt}
-							datar= {r.tmt}
-							locl =  {l.loc}
-							locr = {r.loc} 
+							datal= {l.tmv}
+							datar= {r.tmv}
+							locl =  {l.l1}
+							locr = {r.l1} 
 							tit={'Covid 19 Tests'} 
 						/>
 				</Paper>

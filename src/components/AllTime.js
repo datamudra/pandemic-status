@@ -1,16 +1,21 @@
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import DashCard from './DashCard';
 
 
 const AllTime = (props) => {
 
-    const { l, r, m } = props;
+    const { l, r } = props;
     
     return (
         <Grid container direction='row' spacing={1} >
+            <Grid item xs={12}>
+                <Typography align='center'>
+                    Numbers are totals per million population
+                </Typography>
+            </Grid>
             <Grid item xs={12} sm={6} >
-               <DashCard t='Positive Cases' 
+               <DashCard t='Confirmed Cases' 
                         ll={l.loc} 
                         rl={r.loc} 
                         rs={r.amn}
@@ -27,11 +32,19 @@ const AllTime = (props) => {
             </Grid>
             <Grid item xs={12} sm={6} >
                 <DashCard t='Tests'
-                    ll={l.loc}
-                    rl={r.loc}
-                    rs={r.amt}
-                    ls={l.amt}
+                    ll={l.tlv}
+                    rl={r.tlv}
+                    rs={r.amt == 0 ? -1 : r.amt}
+                    ls={l.amt == 0 ? -1 : l.amt}
                     isd={false}  />
+            </Grid>
+            <Grid item xs={12} sm={6} >
+                <DashCard t='Vaccinations'
+                    ll={l.l1}
+                    rl={r.l1}
+                    rs={r.amv == 0 ? -1 : r.amv}
+                    ls={l.amv == 0 ? -1 : l.amv}
+                    isd={false} />
             </Grid>
             <Grid item xs={12} sm={6} >
                 <DashCard t='Deathrate'
@@ -42,6 +55,7 @@ const AllTime = (props) => {
                     isd={false} 
                     isp={true}/>
             </Grid>
+        
         </Grid> 
 
     );

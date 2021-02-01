@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { Box, Grid, Paper } from '@material-ui/core'; 
+import InfoIcon from '@material-ui/icons/Info'; 
 
 const numberFormatter = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 1, minimumFractionDigits: 0,
@@ -63,52 +64,55 @@ const DV = (props) => {
 };
 
 const DashCard = props => {
-  const { t, ll, rl, rs, ls, rd, ld, isd, isp=false, isb=false} = props;
+  const { t, ll, rl, rs, ls, rd, ld, isd, isp=false} = props;
 	const classes = useStyles();
-  
   return (
   <div>
     <Card /* raised={true} */  >
         <CardContent className={classes.root}>
-           <Grid container direction='row'  >
-           <Grid item xs={12} >
-              <Paper className={classes.mrow} variant='outlined' square={true}>
-                <Typography>
-                  {t}
-                </Typography>
-              </Paper>
-            </ Grid>
-            <Grid item xs={6} >
-              <Paper className={classes.lrow} variant='outlined' square={true}>
-                <Typography >
-                  {ll} 
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={6}>
-              <Paper className={classes.lrow} variant='outlined' square={true}>
-                <Typography>
-                  {numberFormatter.format(ls)} {isp ? '%' : ''}  {isd 
-                          ? <DV className={classes.ld} d={ld} dc='ldc' />
-                          : ''}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={6} >
-              <Paper className={classes.rrow} variant='outlined' square={true}>
-                <Typography >
-                  {rl} 
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={6}>
-              <Paper className={classes.rrow} variant='outlined' square={true}>
-                <Typography>
-                  {numberFormatter.format(rs)} {isp ? '%' : ''} {isd
-                    ? <DV className={classes.rd} d={rd} dc='rdc' />
-                    : ''}
-                </Typography>
-              </Paper>
+          <Grid container direction='row' >        
+              <Grid item xs={12} >
+                <Paper className={classes.mrow} variant='outlined' square={true}>
+                  <Typography>
+                    {t}
+                  </Typography>
+                </Paper>
+              </ Grid>
+            <Grid container className={classes.lrow} >
+              <Grid item xs={6} >
+                  <Paper className={classes.lrow} variant='outlined' square={true}>
+                  <Typography >
+                    {ll} 
+                  </Typography>
+                </Paper>
+              </Grid>
+              <Grid item xs={6}  >
+                <Paper className={classes.lrow} variant='outlined' square={true}>
+                  <Typography>
+                    {ls < 0 ? 'No data' : numberFormatter.format(ls)} {isp & ls>0 ? '%' : ''}  {isd & ls>0 
+                            ? <DV className={classes.ld} d={ld} dc='ldc' />
+                            : ''}
+                  </Typography>
+                </Paper>
+              </Grid>
+            </ Grid >
+            <Grid container className={classes.rrow} >
+              <Grid item xs={6} >
+                <Paper className={classes.rrow} variant='outlined' square={true}>
+                  <Typography >
+                    {rl} 
+                  </Typography>
+                </Paper>
+              </Grid>
+              <Grid item xs={6}>
+                <Paper className={classes.rrow} variant='outlined' square={true}>
+                  <Typography>
+                    {rs < 0 ? 'No data' :numberFormatter.format(rs)} {isp & rs>0 ? '%' : ''} {isd & rs>0
+                      ? <DV className={classes.rd} d={rd} dc='rdc' />
+                      : ''}
+                  </Typography>
+                </Paper>
+              </Grid>
             </Grid>
           </Grid>
       </CardContent>

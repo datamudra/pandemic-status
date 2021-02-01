@@ -1,17 +1,15 @@
 import React from "react";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Trend21 from "./trend21";
-import AllTime from "./alltime";
-import Demographics from "./demographics";
-import CurrentWeekCards from "./CurrentWeekCards";
-
-
+import Trend21 from "./Trend21";
+import AllTime from "./AllTime";
+import ThisWeek from "./ThisWeek";
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
+import People from "./People";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -46,19 +44,19 @@ function a11yProps(index) {
     };
 }
 const useStyles = makeStyles((theme) => ({
-    heading: {
-        fontSize: theme.typography.pxToRem(15),
-        flexBasis: '33.33%',
-        flexShrink: 0,
-    },
-    secondaryHeading: {
-        fontSize: theme.typography.pxToRem(15),
-        color: theme.palette.text.secondary,
-        flexGrow: 2,
-        textAlign: 'right'
-    },
-    root: { flex : 1, color : 'transparent'
-         },
+    // heading: {
+    //     fontSize: theme.typography.pxToRem(15),
+    //     flexBasis: '33.33%',
+    //     flexShrink: 0,
+    // },
+    // secondaryHeading: {
+    //     fontSize: theme.typography.pxToRem(15),
+    //     color: theme.palette.text.secondary,
+    //     flexGrow: 2,
+    //     textAlign: 'right'
+    // },
+    // root: { flex : 1, color : 'transparent'
+    //      },
     tabsu: { borderBottom: '1px solid #9e9e9e',}
   
 }));
@@ -95,16 +93,16 @@ const TabPanels = (props) => {
             </AppBar>
   
                 <TabPanel value={value} index={0} dir={theme.direction}>
-                    <CurrentWeekCards l={left} r={right} />
+                <ThisWeek l={left} r={right} m={meta}/>
                 </TabPanel>
                 <TabPanel value={value} index={1} dir={theme.direction}>
                     <Trend21 l={left} r={right} m={meta} />
                 </TabPanel>
                 <TabPanel value={value} index={2} dir={theme.direction}>
-                    <AllTime l={left} r={right} m={meta} />
+                <AllTime l={left} r={right} m={meta} />
                 </TabPanel>
                  <TabPanel value={value} index={3} dir={theme.direction}>
-                    <Demographics l={left} r={right} m={meta} />
+                <People l={left} r={right} m={meta} />
                 </TabPanel> 
         </div>
     );

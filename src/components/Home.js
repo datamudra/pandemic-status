@@ -8,15 +8,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import TabPanels from "./TabPanels";
 import useStickySWR from "../hooks/useStickySWR";
 import { FixedSizeList as List } from 'react-window';
-import {
-  M_DATA,
-} from './constants';
 
-
-//  const API_ROOT_URL = 'https://github.com/datamudra/api/raw/master';
+// const API_ROOT_URL = 'https://github.com/datamudra/api/raw/master';
 const API_ROOT_URL = 'https://raw.githubusercontent.com/datamudra/api/master';
-
-// const API_ROOT_URL = 'http://192.168.43.247:3000/api';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,8 +33,6 @@ const useStyles = makeStyles((theme) => ({
     color: '#ff6384',
         },
   chipD: {
-    // backgroundColor: '#f4f6ff',
-    // color: '#36a2eb',
     fontSize: 18,
   },
   
@@ -85,6 +77,14 @@ const Home = () =>  {
       refreshInterval: 100000,
     }
   );
+  const { data: M_DATA } = useStickySWR(
+    `${API_ROOT_URL}/mdata.json`,
+    fetcher,
+    {
+      revalidateOnMount: true,
+      refreshInterval: 100000,
+    }
+  );
  
   const { data: LOCS } = useStickySWR(
     `${API_ROOT_URL}/locs.json`,
@@ -107,7 +107,6 @@ const Home = () =>  {
   };
 
   const handleApply = (event, locKey) => {
-    // need to check for  locKey
     console.log(locKey);
     if (isLeft) {setL_KEY(locKey);}
     else {setR_KEY(locKey);}
@@ -135,7 +134,6 @@ const Home = () =>  {
       setfullList(Object.keys(LOCS));   
     } 
     setdOpen(isOpen);
-  //  if (fullList.length > 0) {console.log('Full List populated opening draw'); setdOpen(isOpen);} else{console.log('Empty list draw not opened');}
   };
 
 
@@ -184,7 +182,6 @@ const Home = () =>  {
       </List>
     </div>        
   );
-// : (<div><CircularProgress /> </div>)}
   const locDrawer = (
     <Drawer anchor='bottom' open={dOpen} onClose={(event) => toggleDrawer(event, false)}>
 
@@ -205,10 +202,8 @@ const Home = () =>  {
           <Grid item justify='flex-end' xs={4}>
             <Grid container direction='row' justify='flex-end' spacing={1}>
               <Button
-                // variant="contained"
                 color="default"
                 onClick={(event) => handleApply(event, LOCS[newLoc])}
-                // className={classes.button}
                 startIcon={<DoneIcon />}
                 >
                 APPLY
@@ -223,25 +218,18 @@ const Home = () =>  {
         className={classes.drawRow}
       >
         <Chip className={classes.chipD}
-          // color={isLeft ? 'primary' : 'secondary'}
           size='medium'
           color='primary'
           label={newLoc}
-          // variant='outlined'
-        />
+          />
       </Grid>
         <Divider />
-      {/* {console.log('clist len=' + cList.length + ' ' + cList[1])}         */}
-          {/* {console.log('fulllist len=' + fullList.length  + ' '+ fullList[1])} */}
-
            <Loclist />
         <Divider />
       <Grid container direction="row" justify='flex-end' className={classes.closeRow} >
            <Button
-            // variant="contained"
             color="default"
             onClick={(event) => handleClose()}
-            // className={classes.button}
           startIcon={<CloseIcon />}
           >
           CLOSE
@@ -252,8 +240,13 @@ const Home = () =>  {
 
   return (
     
-       (L_DATA) && (R_DATA) ? 
+       (L_DATA) && (R_DATA) && (M_DATA)? 
         (<span>
+        <Grid item xs={12}>
+          <Typography align='center'>
+           Choose from over 4000 global locations
+                </Typography>
+        </Grid>
         <Grid container direction='row' justify='center' className={classes.chipRow} >
           <Chip className={classes.chipL}
             avatar={<Avatar variant='square' src={L_DATA.iso === '0' ? 'flags/0l.png' : `flags/${L_DATA.iso}.png`} />}
@@ -279,9 +272,8 @@ const Home = () =>  {
               onDelete={(event) => chipDlg(event, false)}
           deleteIcon={<ExpandMoreIcon />}
             />
-          </Grid> 
+        </Grid> 
         {locDrawer}
-
           <Grid container direction="row">
             <Grid item xs={12} >
                <TabPanels left={L_DATA} right={R_DATA} meta={M_DATA} />

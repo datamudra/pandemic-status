@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Box,  Toolbar, Typography} from "@material-ui/core";
+import { AppBar, Box,  Grid,  Toolbar, Typography} from "@material-ui/core";
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -18,6 +18,7 @@ import DataUsageIcon from '@material-ui/icons/DataUsage';
 import InfoIcon from '@material-ui/icons/Info';
 
 import Home from "./components/Home";
+import QAPanels from "./components/QAPanels";
 
 function TabPanel(props) {
 	const { children, sidx, idx, ...other } = props;
@@ -50,6 +51,8 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		flexGrow: 1,
 	},
+	barTit: { fontWeight: 'bold',
+		textAlign: 'center'},
 	drawer: {
 		[theme.breakpoints.up('md')]: {
 			width: drawerWidth,
@@ -105,8 +108,6 @@ const App = (props) => {
 		<div>
 			<div/>
 			<img src='logos.png' alt='Datamudra' width='170' />
-			{/* <img src='logos1.png' alt='Datamudra' width='170' />
-			<img src='logos2.png' alt='Datamudra' width='170' /> */}
 			<Divider />
 			<List>
 				<ListItem 
@@ -158,7 +159,11 @@ const App = (props) => {
 		<CssBaseline />
 			<AppBar position='fixed' className={classes.appBar}>
 		<Toolbar className={classes.tBar} >
-		<Typography className ={classes.barTit}>Covid-19 Status : Check and Compare</Typography>
+		<Grid container direction='row' justify='space-evenly' alignItems='center'>
+			<Grid item xs={11} md={12} >
+							<Typography className={classes.barTit}>COVID-19 STATUS : CHECK AND COMPARE</Typography>
+			</Grid>
+			<Grid item xs={1} >	
 				<IconButton
 					color="inherit"
 					aria-label="open drawer"
@@ -168,6 +173,8 @@ const App = (props) => {
 				>
 					<MenuIcon />
 				</IconButton>
+			</Grid>
+		</Grid>
 		</Toolbar>
 		</AppBar>
 			<nav className={classes.drawer} aria-label="app pgs">
@@ -211,11 +218,11 @@ const App = (props) => {
       			</TabPanel>
 				<TabPanel sidx={sidx} idx={2}>
 					<div className={classes.toolbar} />
-					FAQ
+					<QAPanels />
       			</TabPanel>
 					<TabPanel sidx={sidx} idx={3}>
 					<div className={classes.toolbar} />
-					About
+					It's all about me
       			</TabPanel>
 			</div>
 	</div>	

@@ -1,32 +1,22 @@
-import { Grid, Paper, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import DashCard from './DashCard';
 
+const People = (props) => {
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-           display: 'flex',
-           justifyContent:'space-between'
-    },
-    paper: {
-        // padding: theme.spacing(0),
-        textAlign: 'center',
-    },
-    // details: { backgroundColor: '#6c757d10' }
-}));
-
-const Demographics = (props) => {
-
-    const { l, r, m } = props;
-    const classes = useStyles();
-
+    const { l, r } = props;
+    
     return (
         <Grid container direction='row' spacing={1} >
+            <Grid item xs={12}>
+                <Typography align='center'>
+                    Country level demographic data
+                </Typography>
+            </Grid>
             <Grid item xs={12} sm={6} >
                 <DashCard t='Population Aged Over 65 years'
-                    ll={l.loc}
-                    rl={r.loc}
+                    ll={l.l1}
+                    rl={r.l1}
                     rs={r.p65}
                     ls={l.p65}
                     isd={false}
@@ -34,8 +24,8 @@ const Demographics = (props) => {
             </Grid>
             <Grid item xs={12} sm={6} >
                 <DashCard t='Population Aged Over 70 years'
-                    ll={l.loc}
-                    rl={r.loc}
+                    ll={l.l1}
+                    rl={r.l1}
                     rs={r.p70}
                     ls={l.p70}
                     isd={false}
@@ -43,16 +33,16 @@ const Demographics = (props) => {
             </Grid>
             <Grid item xs={12} sm={6} >
                 <DashCard t='Hospital Beds Per Thousand People'
-                    ll={l.loc}
-                    rl={r.loc}
+                    ll={l.l1}
+                    rl={r.l1}
                     rs={r.hos}
                     ls={l.hos}
                     isd={false} />
             </Grid>
             <Grid item xs={12} sm={6} >
                 <DashCard t='Life Expectancy'
-                    ll={l.loc}
-                    rl={r.loc}
+                    ll={l.l1}
+                    rl={r.l1}
                     rs={r.exp}
                     ls={l.exp}
                     isd={false} />
@@ -67,8 +57,8 @@ const Demographics = (props) => {
             </Grid>
             <Grid item xs={12} sm={6} >
                 <DashCard t='Population Density'
-                    ll={l.loc}
-                    rl={r.loc}
+                    ll={l.l1}
+                    rl={r.l1}
                     rs={r.ppd}
                     ls={l.ppd}
                     isd={false}
@@ -76,8 +66,8 @@ const Demographics = (props) => {
             </Grid>
             <Grid item xs={12} sm={6} >
                 <DashCard t='Median Age'
-                    ll={l.loc}
-                    rl={r.loc}
+                    ll={l.l1}
+                    rl={r.l1}
                     rs={r.med}
                     ls={l.med}
                     isd={false} />
@@ -87,4 +77,4 @@ const Demographics = (props) => {
             );
 };
 
-export default Demographics;
+export default People;
