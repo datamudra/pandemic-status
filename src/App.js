@@ -16,6 +16,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import HelpIcon from '@material-ui/icons/Help';
 import DataUsageIcon from '@material-ui/icons/DataUsage';
 import InfoIcon from '@material-ui/icons/Info';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 import Home from "./components/Home";
 import QAPanels from "./components/QAPanels";
@@ -68,6 +69,8 @@ const useStyles = makeStyles((theme) => ({
 	tBar: {
 		justifyContent: 'space-between',
 	},
+	aPage : { textAlign: 'center',},
+
 	menuButton: {
 		marginRight: theme.spacing(2),
 		[theme.breakpoints.up('md')]: {
@@ -138,13 +141,13 @@ const App = (props) => {
 					<ListItemText primary='FAQ' />
 				</ListItem>
 				<ListItem 
-				button key='About' 
+				button key='Contact' 
 				selected={sidx === 3} 
 					onClick={(event) => hLIC(event, 3)}>
 					<ListItemIcon>
 						<InfoIcon />
 					</ListItemIcon>
-					<ListItemText primary='About' />
+					<ListItemText primary='Contact' />
 				</ListItem>
 			</List>
 			<Divider />
@@ -222,7 +225,27 @@ const App = (props) => {
       			</TabPanel>
 					<TabPanel sidx={sidx} idx={3}>
 					<div className={classes.toolbar} />
-					It's all about me
+					<div className={classes.aPage} >
+					<Typography>
+						<img src='logos.png' alt='Datamudra' width='170' />	
+					</Typography>
+					<Typography>
+						"Clarity through simple facts"
+					</Typography>
+					<br />
+					<a
+							href="mailto:hello@datamudra.com"
+							className="mail"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+					<MailOutlineIcon />
+					</a>
+					<Typography>
+					Email for queries or feedback
+					</Typography>
+
+					</div>
       			</TabPanel>
 			</div>
 	</div>	
