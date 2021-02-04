@@ -8,7 +8,6 @@ import SearchIcon from '@material-ui/icons/Search';
 import TabPanels from "./TabPanels";
 import useStickySWR from "../hooks/useStickySWR";
 import { FixedSizeList as List } from 'react-window';
-import ExploreIcon from '@material-ui/icons/Explore';
 
 
 // const API_ROOT_URL = 'https://github.com/datamudra/api/raw/master';
@@ -175,7 +174,7 @@ const Home = () =>  {
       <div>
       <List
         role = "presentation"
-        height={450}
+        height={200}
         itemCount={cList.length}
         itemSize={40}
         width={'100%'}
@@ -244,14 +243,6 @@ const Home = () =>  {
     
        (L_DATA) && (R_DATA) && (M_DATA)? 
         (<span>
-        <Grid item xs={12}>
-            <Typography align='center'>
-              <Chip
-                label='Choose from over 4000 global locations'
-                variant='outlined'
-              />
-            </Typography>
-          </Grid>
         <Grid container direction='row' justify='center' className={classes.chipRow} >
           <Chip className={classes.chipL}
             avatar={<Avatar variant='square' src={L_DATA.iso === '0' ? 'flags/0l.png' : `flags/${L_DATA.iso}.png`} />}

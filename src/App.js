@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Box,  Grid,  Toolbar, Typography} from "@material-ui/core";
+import { AppBar, Box,  Chip,  Grid,  Toolbar, Typography} from "@material-ui/core";
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -20,6 +20,7 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 import Home from "./components/Home";
 import QAPanels from "./components/QAPanels";
+import DSPanels from "./components/DSpanels";
 
 function TabPanel(props) {
 	const { children, sidx, idx, ...other } = props;
@@ -52,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		flexGrow: 1,
 	},
-	barTit: { fontWeight: 'bold',
+	barTit: { fontWeight : 900,
 		textAlign: 'center'},
 	drawer: {
 		[theme.breakpoints.up('md')]: {
@@ -60,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
 			flexShrink: 0,
 		},
 	},
+	barChip: { borderColor: '#fbe5e7'},
 	appBar: {
 		[theme.breakpoints.up('md')]: {
 			width: `calc(100% - ${drawerWidth}px)`,
@@ -80,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
 	// necessary for content to be below app bar
 	content: {
 		flexGrow: 1,
-		padding: theme.spacing(0),
+		padding: theme.spacing(0), 
 	},
 	toolbar: theme.mixins.toolbar,
 	drawerPaper: {
@@ -160,11 +162,21 @@ const App = (props) => {
 	return(
 		<div className={classes.root}>
 		<CssBaseline />
-			<AppBar position='fixed' className={classes.appBar}>
+			<AppBar position='fixed' className={classes.appBar} disableGutters={true} >
 		<Toolbar className={classes.tBar} >
 		<Grid container direction='row' justify='space-evenly' alignItems='center'>
 			<Grid item xs={11} md={12} >
-							<Typography className={classes.barTit}>COVID-19 STATUS : CHECK AND COMPARE</Typography>
+							<Typography className={classes.barTit} variant="caption" display="block">COVID-19 STATUS : CHECK AND COMPARE</Typography>
+							<Grid item xs={12}>
+								<Typography align='center' >
+									<Chip className={classes.barChip}
+										label='Choose from over 4500 global locations'
+										variant='outlined'
+										color="Primary"
+										size='small'
+									/>
+								</Typography>
+							</Grid>
 			</Grid>
 			<Grid item xs={1} >	
 				<IconButton
@@ -177,6 +189,7 @@ const App = (props) => {
 					<MenuIcon />
 				</IconButton>
 			</Grid>
+						
 		</Grid>
 		</Toolbar>
 		</AppBar>
@@ -217,7 +230,7 @@ const App = (props) => {
 				</TabPanel>
 				<TabPanel sidx={sidx} idx={1}>				
 					<div className={classes.toolbar} />
-					Datasource
+					<DSPanels />
       			</TabPanel>
 				<TabPanel sidx={sidx} idx={2}>
 					<div className={classes.toolbar} />

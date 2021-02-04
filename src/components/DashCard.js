@@ -68,7 +68,7 @@ const DashCard = props => {
 	const classes = useStyles();
   return (
   <div>
-    <Card /* raised={true} */  >
+    <Card >
         <CardContent className={classes.root}>
           <Grid container direction='row' >        
               <Grid item xs={12} >

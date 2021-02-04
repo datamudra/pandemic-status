@@ -87,8 +87,8 @@ const QAPanels = () => {
                 <AccordionDetails>
                     <Typography>
                         The data is updated daily from freely available feeds from a number of reputable data sources. 
-                        Daily data feeds from John Hopkins University in the United States, 
-                        the Our World in Data project at Oxford University and the Covid19India.org crowdsourced project in India. I have written algorithms that automatically combine this data and transform it in a way that allows the simple presentation of information you can see displayed. Click the Data Source menu item for a more detailed breakdown of the sources.
+                        Daily data feeds from Johns Hopkins University in the United States, 
+                        the Our World in Data project at Oxford University and the Covid19India.org crowdsourced project in India. I have written algorithms that automatically combine this data and transform it in a way that allows the simple presentation of information you can see displayed. Click the Data Source menu item for more details of the sources.
 
                     </Typography> 
                 </AccordionDetails>
@@ -148,14 +148,35 @@ const QAPanels = () => {
                     aria-controls="p4bh-content"
                     id="p4bh-header"
                 >
+                    <Typography className={classes.hl1}>Q What locations are available?</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Grid container direction='column'>
+                   <Typography>
+                    1. United States - all states and counties - data sourced from John Hopkins University
+                    </Typography>
+                    <Typography>
+                    2. India - all states and districts - data sourced from covid19India.org
+                    </Typography>
+                    <Typography>
+                    3. All other countries - country level plus regional breakdown if available -  data sourced from John Hopkins University
+                    </Typography>
+                        </Grid>
+                </AccordionDetails>
+            </Accordion>
+            <Accordion expd={expd === 7} onChange={hChng(7)}>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="p4bh-content"
+                    id="p4bh-header"
+                >
                     <Typography className={classes.hl1}>Q Can I help?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                   <Typography>
+                    <Typography>
                         I have initially chosen to provide this website freely, without pushing advertising.
                         The site advocates user privacy, and other than counting anonymous page visits we do not collect or manipulate any of your data in any way.
-                        Many hours of work were involved in building and maintaining this site so any
-                        financial help or assistance would of course be appreciated. You can connect with me by email with any ideas.
+                        You can connect with me by email with any feedback.
                     <a
                             href="mailto:hello@datamudra.com"
                             className={classes.hl1}
