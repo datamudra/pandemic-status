@@ -30,7 +30,6 @@ const DSPanels = () => {
                     <Chip 
                         label='Data Is refreshed daily from:'
                         variant='outlined'
-                        color=""
                         size='small'
                     />
                 </Typography>
@@ -41,7 +40,7 @@ const DSPanels = () => {
                     <Grid container direction='column' alignItems='center' spacing={2} >
                     <Grid item xs={12}>
                     <Chip   
-                            avatar= {<Avatar variant='square' src="flags/US.png" />}
+                                    avatar={<Avatar variant='square' src={process.env.PUBLIC_URL + "/flags/US.png"} />}
                             label='Johns Hopkins University'
                             variant='outlined'
                             size='small'
@@ -69,7 +68,7 @@ const DSPanels = () => {
                         <Grid container direction='column' alignItems='center' spacing={2} >
                             <Grid item xs={12}>
                             <Chip
-                                avatar={<Avatar variant='square' src="flags/IN.png" />}
+                                    avatar={<Avatar variant='square' src={process.env.PUBLIC_URL +"/flags/IN.png"} />}
                                 label='Covid-19 India Org'
                                 size='small'
                                 variant='outlined'
@@ -95,7 +94,7 @@ const DSPanels = () => {
                         <Grid container direction='column' alignItems='center' spacing={2}  >
                             <Grid item xs={12}>
                             <Chip
-                                avatar={<Avatar variant='square' src="flags/GB.png" />}
+                                    avatar={<Avatar variant='square' src={process.env.PUBLIC_URL +"/flags/GB.png"} />}
                                 label='Our World In Data'
                                 size='small'
                                 variant='outlined'
@@ -131,9 +130,10 @@ const DSPanels = () => {
                 </Card>
             </Grid>
             <Grid item xs={12}>
-            <Typography variant="body2" align='center'>
-                Data cited above has been freely released under a
-                        &nbsp; 
+                <Typography component='div' variant="body2" align='center'>
+                    Data cited above has been freely released under a
+                    &nbsp; 
+                    </Typography> 
                     <Typography variant="body2" align='center'>
                         <a
                             href="https://creativecommons.org/licenses/by/4.0/"
@@ -142,7 +142,7 @@ const DSPanels = () => {
                             creative commons 4.0 license
                         </a>
                     </Typography>       
-            </Typography>       
+                 
             </Grid>        
        </Grid>
        

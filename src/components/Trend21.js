@@ -25,7 +25,7 @@ const Trend21 = (props) => {
 			</Grid>
 		<Grid item xs={12} sm={6} >
 						<Paper className={classes.paper} elevation={3} >
-							<Typography component="p" align='Center'>
+							<Typography component="p" align='center'>
 								Confirmed Cases
 				</Typography>
 							<LineChart
@@ -41,7 +41,7 @@ const Trend21 = (props) => {
 
 			<Grid item xs={12} sm={6}>
 				<Paper className={classes.paper} elevation={3} >
-				<Typography  component="p" align='Center'>    
+				<Typography  component="p" align='center'>    
 				Deaths
 				</Typography>
 				<LineChart 
@@ -56,7 +56,7 @@ const Trend21 = (props) => {
           	</Grid> 
 			<Grid item xs={12} sm={6}>
 				<Paper className={classes.paper} elevation={3}>
-				<Typography  component="p" align='Center'>    
+				<Typography  component="p" align='center'>    
 				Vaccinations (Country Level)
 				</Typography>				
 				<LineChart 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect }  from "react";
 import { AppBar, Box,  Chip,  Grid,  Toolbar, Typography} from "@material-ui/core";
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -17,6 +17,7 @@ import HelpIcon from '@material-ui/icons/Help';
 import DataUsageIcon from '@material-ui/icons/DataUsage';
 import InfoIcon from '@material-ui/icons/Info';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import ReactGA from 'react-ga';
 
 import Home from "./components/Home";
 import QAPanels from "./components/QAPanels";
@@ -35,7 +36,7 @@ function TabPanel(props) {
 		>
 			{sidx === idx && (
 				<Box p={1}>
-					<Typography>{children}</Typography>
+					<Typography component='div'>{children}</Typography>
 				</Box>
 			)}
 		</div>
@@ -61,7 +62,8 @@ const useStyles = makeStyles((theme) => ({
 			flexShrink: 0,
 		},
 	},
-	barChip: { borderColor: '#fbe5e7'},
+	barChip: { borderColor: '#fbe5e7',
+		color: 'white',},
 	appBar: {
 		[theme.breakpoints.up('md')]: {
 			width: `calc(100% - ${drawerWidth}px)`,
@@ -93,6 +95,7 @@ const useStyles = makeStyles((theme) => ({
 const drawerWidth = 180;
 
 const App = (props) => {
+
 	const { window } = props;
 	const classes = useStyles();
 	const theme = useTheme();
@@ -112,7 +115,7 @@ const App = (props) => {
 	const drawer = (
 		<div>
 			<div/>
-			<img src='logos.png' alt='Datamudra' width='170' />
+			<img src={process.env.PUBLIC_URL + '/logos.png'} alt='Datamudra' width='170' />		
 			<Divider />
 			<List>
 				<ListItem 
@@ -158,21 +161,28 @@ const App = (props) => {
 
 	const container = window !== undefined ? () => window().document.body : undefined;
 
+	useEffect(() => {
+		// Runs once, after mounting
+		ReactGA.initialize('UA-188843494-1');
+		console.log('called GA UA-188843494-1');
+		ReactGA.pageview('landing');
+	}, []);
 
 	return(
 		<div className={classes.root}>
 		<CssBaseline />
-			<AppBar position='fixed' className={classes.appBar} disableGutters={true} >
+			<AppBar position='fixed' className={classes.appBar} >
 		<Toolbar className={classes.tBar} >
 		<Grid container direction='row' justify='space-evenly' alignItems='center'>
 			<Grid item xs={11} md={12} >
-							<Typography className={classes.barTit} variant="caption" display="block">COVID-19 STATUS : CHECK AND COMPARE</Typography>
+							<Typography className={classes.barTit} variant="caption" display="block">
+							COVID-19 STATUS : CHECK AND COMPARE
+							</Typography>
 							<Grid item xs={12}>
-								<Typography align='center' >
+								<Typography component='div' align='center' >
 									<Chip className={classes.barChip}
 										label='Choose from over 4500 global locations'
 										variant='outlined'
-										color="Primary"
 										size='small'
 									/>
 								</Typography>
@@ -226,7 +236,7 @@ const App = (props) => {
 			<div className={classes.content}>
 				<TabPanel sidx={sidx} idx={0}>
 					<div className={classes.toolbar} />						
-					<Home /> 
+					 <Home /> 
 				</TabPanel>
 				<TabPanel sidx={sidx} idx={1}>				
 					<div className={classes.toolbar} />
@@ -239,9 +249,9 @@ const App = (props) => {
 					<TabPanel sidx={sidx} idx={3}>
 					<div className={classes.toolbar} />
 					<div className={classes.aPage} >
-					<Typography>
-						<img src='logos.png' alt='Datamudra' width='170' />	
-					</Typography>
+					<div>
+					<img src={process.env.PUBLIC_URL + '/logos.png'} alt='Datamudra' width='170' />	
+					</div>
 					<Typography>
 						"Clarity through simple facts"
 					</Typography>

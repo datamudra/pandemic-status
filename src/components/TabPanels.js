@@ -24,7 +24,7 @@ function TabPanel(props) {
         >
             {value === index && (
                 <Box p={3}>
-                    <Typography>{children}</Typography>
+                    <Typography component='div'> {children}</Typography>
                 </Box>
             )}
         </div>
@@ -44,20 +44,7 @@ function a11yProps(index) {
     };
 }
 const useStyles = makeStyles((theme) => ({
-    // heading: {
-    //     fontSize: theme.typography.pxToRem(15),
-    //     flexBasis: '33.33%',
-    //     flexShrink: 0,
-    // },
-    // secondaryHeading: {
-    //     fontSize: theme.typography.pxToRem(15),
-    //     color: theme.palette.text.secondary,
-    //     flexGrow: 2,
-    //     textAlign: 'right'
-    // },
-    // root: { flex : 1, color : 'transparent'
-    //      },
-    tabsu: { borderBottom: '1px solid #9e9e9e',}
+  tabsu: { borderBottom: '1px solid #9e9e9e',}
   
 }));
 
@@ -82,7 +69,6 @@ const TabPanels = (props) => {
                     indicatorColor="primary"
                     textColor="primary"
                     variant="fullWidth"
-                    centred
                     aria-label="full tabs"
                 >
                     <Tab label="This Week" {...a11yProps(0)} />
@@ -93,16 +79,16 @@ const TabPanels = (props) => {
             </AppBar>
   
                 <TabPanel value={value} index={0} dir={theme.direction}>
-                <ThisWeek l={left} r={right} m={meta}/>
+                 <ThisWeek l={left} r={right} m={meta}/> 
                 </TabPanel>
                 <TabPanel value={value} index={1} dir={theme.direction}>
-                    <Trend21 l={left} r={right} m={meta} />
+                      <Trend21 l={left} r={right} m={meta} /> 
                 </TabPanel>
                 <TabPanel value={value} index={2} dir={theme.direction}>
-                <AllTime l={left} r={right} m={meta} />
+                  <AllTime l={left} r={right} m={meta} /> 
                 </TabPanel>
                  <TabPanel value={value} index={3} dir={theme.direction}>
-                <People l={left} r={right} m={meta} />
+                  <People l={left} r={right} m={meta} /> 
                 </TabPanel> 
         </div>
     );

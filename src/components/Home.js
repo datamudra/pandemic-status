@@ -11,7 +11,7 @@ import { FixedSizeList as List } from 'react-window';
 
 
 // const API_ROOT_URL = 'https://github.com/datamudra/api/raw/master';
-const API_ROOT_URL = 'https://raw.githubusercontent.com/datamudra/api/master';
+const API_ROOT_URL = 'https://raw.githubusercontent.com/datamudra/api/master/data';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -200,7 +200,7 @@ const Home = () =>  {
           />
          </Grid>
           
-          <Grid item justify='flex-end' xs={4}>
+          <Grid item xs={4}>
             <Grid container direction='row' justify='flex-end' spacing={1}>
               <Button
                 color="default"
@@ -245,11 +245,10 @@ const Home = () =>  {
         (<span>
         <Grid container direction='row' justify='center' className={classes.chipRow} >
           <Chip className={classes.chipL}
-            avatar={<Avatar variant='square' src={L_DATA.iso === '0' ? 'flags/0l.png' : `flags/${L_DATA.iso}.png`} />}
+            avatar={<Avatar variant='square' src={L_DATA.iso === '0' ? process.env.PUBLIC_URL + '/flags/0l.png' : process.env.PUBLIC_URL +`/flags/${L_DATA.iso}.png`} />}
               label={L_DATA.loc}
               variant='outlined'
               clickable
-              deleteable
               onClick={(event) => chipDlg(event, true)}
               onDelete={(event) => chipDlg(event, true)}
             deleteIcon={<ExpandMoreIcon />}
@@ -260,7 +259,7 @@ const Home = () =>  {
           </Typography>
           </Grid>
           <Chip className={classes.chipR}
-            avatar={<Avatar variant='square' src={R_DATA.iso === '0' ? 'flags/0r.png' : `flags/${R_DATA.iso}.png` } />}
+            avatar={<Avatar variant='square' src={R_DATA.iso === '0' ? process.env.PUBLIC_URL + '/flags/0r.png' : process.env.PUBLIC_URL + `/flags/${R_DATA.iso}.png` } />}
               label={R_DATA.loc}
               variant='outlined'
               clickable

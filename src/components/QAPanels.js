@@ -31,15 +31,15 @@ const useStyles = makeStyles((theme) => ({
 const QAPanels = () => {
 
     const classes = useStyles();
-    const [expd, setExpd] = React.useState(0);
+    const [expd, setExpd] = React.useState(false);
 
-    const hChng = (p) => (event, isExpd) => {
-        setExpd(isExpd ? p : false);
+    const hChng = (p) => (event, isExpanded) => {
+        setExpd(isExpanded ? p : false);
     };
 
     return (
         <div className={classes.root}>
-            <Accordion expd={expd === 1} onChange={hChng(1)}>
+            <Accordion expanded={expd === 1} onChange={hChng(1)}>
                 <AccordionSummary className={classes.root}
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="p1bh-content"
@@ -57,7 +57,7 @@ const QAPanels = () => {
 
                 </AccordionDetails>
             </Accordion>
-            <Accordion expd={expd === 2} onChange={hChng(2)}>
+            <Accordion expanded={expd === 2} onChange={hChng(2)}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="p2bh-content"
@@ -75,7 +75,7 @@ const QAPanels = () => {
                    
                 </AccordionDetails>
             </Accordion>
-            <Accordion expd={expd === 3} onChange={hChng(3)}>
+            <Accordion expanded={expd === 3} onChange={hChng(3)}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="p3bh-content"
@@ -93,7 +93,7 @@ const QAPanels = () => {
                     </Typography> 
                 </AccordionDetails>
             </Accordion>
-            <Accordion expd={expd === 4} onChange={hChng(4)}>
+            <Accordion expanded={expd === 4} onChange={hChng(4)}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="p4bh-content"
@@ -123,7 +123,7 @@ const QAPanels = () => {
                     </Grid>
                 </AccordionDetails>
             </Accordion>
-            <Accordion expd={expd === 5} onChange={hChng(5)}>
+            <Accordion expanded={expd === 5} onChange={hChng(5)}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="p4bh-content"
@@ -142,7 +142,7 @@ const QAPanels = () => {
                     </Typography>
                 </AccordionDetails>
             </Accordion>
-            <Accordion expd={expd === 6} onChange={hChng(6)}>
+            <Accordion expanded={expd === 6} onChange={hChng(6)}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="p4bh-content"
@@ -164,7 +164,7 @@ const QAPanels = () => {
                         </Grid>
                 </AccordionDetails>
             </Accordion>
-            <Accordion expd={expd === 7} onChange={hChng(7)}>
+            <Accordion expanded={expd === 7} onChange={hChng(7)}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="p4bh-content"

@@ -4,7 +4,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { Box, Grid, Paper } from '@material-ui/core'; 
-import InfoIcon from '@material-ui/icons/Info'; 
 
 const numberFormatter = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 1, minimumFractionDigits: 0,
