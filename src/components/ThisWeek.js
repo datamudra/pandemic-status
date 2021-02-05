@@ -1,23 +1,34 @@
-import { Chip, Grid, Typography } from '@material-ui/core';
+import { Chip, Grid, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
 import DashCard from './DashCard';
 import RestoreIcon from '@material-ui/icons/Restore';
 
+const useStyles = makeStyles((theme) => ({
+    tChip: { backgroundColor: 'transparent', },
+
+}));
 
 const ThisWeek = (props) => {
 
     const { l, r, m} = props;
+    const classes = useStyles();
 
     return (
        <Grid container spacing={0}>
-             <Grid item xs={12}>
-                <Typography align='center'>
-                    Numbers are totals per million population
-                </Typography> 
+            <Grid item xs={12} spacing={1}>
+                <Typography component='div' align='center'>
+                    <Chip
+                        label={'7 days period ('+m.wr+')'}
+                        variant='outlined'
+                    />
+                </Typography>
             </Grid>
-            <Grid item xs={12}>
-                <Typography align='center' gutterBottom >
-                    7 day time period ({m.wr})
+            <Grid item xs={12} spacing={1}>
+                <Typography component='div' align='center'>
+                    <Chip
+                        className={classes.tChip}
+                        label='Numbers are totals per million population'
+                    />
                 </Typography>
             </Grid>
          <Grid container direction='row' spacing={1} >

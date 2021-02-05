@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@material-ui/core';
+import { Chip, Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import DashCard from './DashCard';
 
@@ -8,9 +8,12 @@ const People = (props) => {
     
     return (
         <Grid container direction='row' spacing={1} >
-            <Grid item xs={12}>
-                <Typography align='center'>
-                    Country level demographic data
+            <Grid item xs={12} spacing={1}>
+                <Typography component='div' align='center'>
+                    <Chip
+                        label={'Country level demographic data'}
+                        variant='outlined'
+                    />
                 </Typography>
             </Grid>
             <Grid item xs={12} sm={6} >

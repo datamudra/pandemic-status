@@ -1,4 +1,4 @@
-import { Grid, Paper, Typography } from '@material-ui/core';
+import { Chip, Grid, Paper, Typography } from '@material-ui/core';
 import React from 'react';
 import LineChart from "./LineChart";
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,7 +8,8 @@ const useStyles = makeStyles(() => ({
    paper: {
         textAlign: 'center',
     },
-	details: { backgroundColor: '#6c757d10' }
+	tChip: { backgroundColor: 'transparent', },
+	details: { backgroundColor: '#6c757d10', }
 }));
 
 const Trend21 = (props) => {
@@ -18,10 +19,13 @@ const Trend21 = (props) => {
 
     return (
 		<Grid container direction='row' spacing={1}>
-			<Grid item xs={12}>
-				<Typography align='center'>
-					Numbers are totals per million population
-                </Typography>
+			<Grid item xs={12} spacing={1}>
+				<Typography component='div' align='center'>
+					<Chip
+						className={classes.tChip}
+						label='Numbers are totals per million population'
+					/>
+				</Typography>
 			</Grid>
 		<Grid item xs={12} sm={6} >
 						<Paper className={classes.paper} elevation={3} >

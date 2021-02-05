@@ -54,7 +54,8 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		flexGrow: 1,
 	},
-	barTit: { fontWeight : 900,
+	barTit: { 
+		// fontWeight : 900,
 		textAlign: 'center'},
 	drawer: {
 		[theme.breakpoints.up('md')]: {
@@ -179,7 +180,7 @@ const App = (props) => {
 		<Grid container direction='row' justify='space-evenly' alignItems='center'>
 			<Grid item xs={11} md={12} >
 							<Typography className={classes.barTit} variant="caption" display="block">
-							COVID-19 STATUS : CHECK AND COMPARE
+								COVID-19 STATUS : CHECK &amp; COMPARE
 							</Typography>
 							<Grid item xs={12}>
 								<Typography component='div' align='center' >
