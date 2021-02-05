@@ -10,7 +10,7 @@ import useStickySWR from "../hooks/useStickySWR";
 import { FixedSizeList as List } from 'react-window';
 
 
-// const API_ROOT_URL = 'https://github.com/datamudra/api/raw/master';
+
 const API_ROOT_URL = 'https://raw.githubusercontent.com/datamudra/api/master/data';
 
 
