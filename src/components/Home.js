@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect }  from "react";
 import { Avatar, Button, Chip, CircularProgress,  Divider,  Drawer,  Grid,  InputAdornment,  ListItem,  TextField,  Typography } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -8,6 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import TabPanels from "./TabPanels";
 import useStickySWR from "../hooks/useStickySWR";
 import { FixedSizeList as List } from 'react-window';
+import ReactGA from 'react-ga';
 
 
 
@@ -42,12 +43,12 @@ const useStyles = makeStyles((theme) => ({
   },
 })); 
 
-const Home = () =>  {
+const Home = (props) =>  {
   
+  const {L_KEY, R_KEY, setL_KEY, setR_KEY } = props; 
   const classes = useStyles();
   const locPlace = 'Choose from list'
-  const [L_KEY, setL_KEY] = React.useState('20001');
-  const [R_KEY, setR_KEY] = React.useState('20002');
+
   const [newLoc, setnewLoc] = React.useState(locPlace);
   const [dOpen, setdOpen] = React.useState(false);
   const [lFilter, setlFilter] = React.useState('');
@@ -112,7 +113,12 @@ const Home = () =>  {
     if (isLeft) {setL_KEY(locKey);}
     else {setR_KEY(locKey);}
     setnewLoc(locPlace);
-    toggleDrawer(false)
+    toggleDrawer(false);
+    // ReactGA.event({
+    //   category: 'Search',
+    //   action: newLoc,
+    // });
+    ReactGA.pageview('Search/'+newLoc);
   }; 
  
   const cList = fullList.filter(loc => loc.toLowerCase().includes(lFilter.toLowerCase()));

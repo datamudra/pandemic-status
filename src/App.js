@@ -16,12 +16,12 @@ import HomeIcon from '@material-ui/icons/Home';
 import HelpIcon from '@material-ui/icons/Help';
 import DataUsageIcon from '@material-ui/icons/DataUsage';
 import InfoIcon from '@material-ui/icons/Info';
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import ReactGA from 'react-ga';
 
 import Home from "./components/Home";
 import QAPanels from "./components/QAPanels";
 import DSPanels from "./components/DSpanels";
+import About from "./components/About";
 
 function TabPanel(props) {
 	const { children, sidx, idx, ...other } = props;
@@ -73,8 +73,6 @@ const useStyles = makeStyles((theme) => ({
 	tBar: {
 		justifyContent: 'space-between',
 	},
-	aPage : { textAlign: 'center',},
-
 	menuButton: {
 		marginRight: theme.spacing(2),
 		[theme.breakpoints.up('md')]: {
@@ -93,6 +91,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const drawerWidth = 180;
+const pages = ['home', 'datasources', 'FAQ', 'contact']
 
 const App = (props) => {
 
@@ -100,16 +99,20 @@ const App = (props) => {
 	const classes = useStyles();
 	const theme = useTheme();
 	const [mO, setMO] = React.useState(false);
+	const [L_LOC, setL_LOC] = React.useState('20001');
+	const [R_LOC, setR_LOC] = React.useState('20002');
+
 	const hMT = () => {
 		setMO(!mO);
 	};
 	const [sidx, setsidx] = React.useState(0);
-
 	const hLIC = (event, idx) => {
 		setsidx(idx);
+		ReactGA.pageview(pages[idx]);
 		if (mO) {
 			
 			hMT()};
+
 	};
 
 	const drawer = (
@@ -165,7 +168,7 @@ const App = (props) => {
 		// Runs once, after mounting
 		ReactGA.initialize('UA-188843494-1');
 		console.log('called GA UA-188843494-1');
-		ReactGA.pageview('landing');
+		ReactGA.pageview(pages[0]);
 	}, []);
 
 	return(
@@ -236,7 +239,7 @@ const App = (props) => {
 			<div className={classes.content}>
 				<TabPanel sidx={sidx} idx={0}>
 					<div className={classes.toolbar} />						
-					 <Home /> 
+					<Home L_KEY={L_LOC} R_KEY={R_LOC} setL_KEY={setL_LOC} setR_KEY={setR_LOC} /> 
 				</TabPanel>
 				<TabPanel sidx={sidx} idx={1}>				
 					<div className={classes.toolbar} />
@@ -248,27 +251,7 @@ const App = (props) => {
       			</TabPanel>
 					<TabPanel sidx={sidx} idx={3}>
 					<div className={classes.toolbar} />
-					<div className={classes.aPage} >
-					<div>
-					<img src={process.env.PUBLIC_URL + '/logos.png'} alt='Datamudra' width='170' />	
-					</div>
-					<Typography>
-						"Clarity through simple facts"
-					</Typography>
-					<br />
-					<a
-							href="mailto:hello@datamudra.com"
-							className="mail"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-					<MailOutlineIcon />
-					</a>
-					<Typography>
-					Email for queries or feedback
-					</Typography>
-
-					</div>
+					<About />
       			</TabPanel>
 			</div>
 	</div>	

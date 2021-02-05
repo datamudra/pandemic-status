@@ -10,6 +10,7 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
 import People from "./People";
+import ReactGA from 'react-ga';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -48,6 +49,8 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
+const tabs=['thisweek', '3weeks','history','people'];
+
 const TabPanels = (props) => {
 
     const { left, right, meta } = props;
@@ -57,6 +60,7 @@ const TabPanels = (props) => {
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+        ReactGA.pageview(tabs[newValue]);
     };
 
    

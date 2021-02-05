@@ -173,7 +173,7 @@ const QAPanels = () => {
                     <Typography className={classes.hl1}>Q Can I help?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Typography>
+                    <Typography >
                         I have initially chosen to provide this website freely, without pushing advertising.
                         The site advocates user privacy, and other than counting anonymous page visits we do not collect or manipulate any of your data in any way.
                         You can connect with me by email with any feedback.

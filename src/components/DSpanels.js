@@ -26,7 +26,7 @@ const DSPanels = () => {
     return (
         <Grid container spacing={1} className={classes.root} direction='row' justify='center'>
             <Grid item xs={12}>
-                <Typography align='center' >
+                <Typography component='div' align='center' >
                     <Chip 
                         label='Data Is refreshed daily from:'
                         variant='outlined'
