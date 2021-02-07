@@ -24,7 +24,7 @@ const DSPanels = () => {
     const classes = useStyles();
 
     return (
-        <Grid container spacing={1} className={classes.root} direction='row' justify='center'>
+        <Grid container className={classes.root} direction='row' justify='center' spacing={1}>
             <Grid item xs={12}>
                 <Typography component='div' align='center' >
                     <Chip 

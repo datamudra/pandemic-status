@@ -8,7 +8,7 @@ const People = (props) => {
     
     return (
         <Grid container direction='row' spacing={1} >
-            <Grid item xs={12} spacing={1}>
+            <Grid item xs={12} >
                 <Typography component='div' align='center'>
                     <Chip
                         label={'Country level demographic data'}

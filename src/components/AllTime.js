@@ -14,7 +14,7 @@ const AllTime = (props) => {
     const classes = useStyles();
     return (
         <Grid container direction='row' spacing={1} >
-            <Grid item xs={12} spacing={1}>
+            <Grid item xs={12} >
                 <Typography component='div' align='center'>
                     <Chip
                         className={classes.tChip}
@@ -42,16 +42,16 @@ const AllTime = (props) => {
                 <DashCard t='Tests'
                     ll={l.tlv}
                     rl={r.tlv}
-                    rs={r.amt == 0 ? -1 : r.amt}
-                    ls={l.amt == 0 ? -1 : l.amt}
+                    rs={r.amt === 0 ? -1 : r.amt}
+                    ls={l.amt === 0 ? -1 : l.amt}
                     isd={false}  />
             </Grid>
             <Grid item xs={12} sm={6} >
                 <DashCard t='Vaccinations'
                     ll={l.l1}
                     rl={r.l1}
-                    rs={r.amv == 0 ? -1 : r.amv}
-                    ls={l.amv == 0 ? -1 : l.amv}
+                    rs={r.amv === 0 ? -1 : r.amv}
+                    ls={l.amv === 0 ? -1 : l.amv}
                     isd={false} />
             </Grid>
             <Grid item xs={12} sm={6} >

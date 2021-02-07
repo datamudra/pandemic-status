@@ -15,7 +15,7 @@ const ThisWeek = (props) => {
 
     return (
        <Grid container spacing={0}>
-            <Grid item xs={12} spacing={1}>
+            <Grid item xs={12} >
                 <Typography component='div' align='center'>
                     <Chip
                         label={'7 days period ('+m.wr+')'}
@@ -23,7 +23,7 @@ const ThisWeek = (props) => {
                     />
                 </Typography>
             </Grid>
-            <Grid item xs={12} spacing={1}>
+            <Grid item xs={12}>
                 <Typography component='div' align='center'>
                     <Chip
                         className={classes.tChip}

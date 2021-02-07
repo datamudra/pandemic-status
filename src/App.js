@@ -1,6 +1,5 @@
 import React, { useEffect }  from "react";
-import { AppBar, Box,  Chip,  Grid,  Toolbar, Typography} from "@material-ui/core";
-import PropTypes from 'prop-types';
+import { AppBar, Chip,  Grid,  Toolbar, Typography} from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -22,32 +21,8 @@ import Home from "./components/Home";
 import QAPanels from "./components/QAPanels";
 import DSPanels from "./components/DSpanels";
 import About from "./components/About";
+import { Link, Route, Redirect, Switch, useLocation } from 'react-router-dom';
 
-function TabPanel(props) {
-	const { children, sidx, idx, ...other } = props;
-
-	return (
-		<div
-			role="tabpanel"
-			hidden={sidx !== idx}
-			id={`p-tbi-${idx}`}
-			aria-labelledby={`p-tb-${idx}`}
-			{...other}
-		>
-			{sidx === idx && (
-				<Box p={1}>
-					<Typography component='div'>{children}</Typography>
-				</Box>
-			)}
-		</div>
-	);
-}
-
-TabPanel.propTypes = {
-	children: PropTypes.node,
-	idx: PropTypes.any.isRequired,
-	sidx: PropTypes.any.isRequired,
-};
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -55,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
 		flexGrow: 1,
 	},
 	barTit: { 
-		// fontWeight : 900,
 		textAlign: 'center'},
 	drawer: {
 		[theme.breakpoints.up('md')]: {
@@ -93,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
 
 const drawerWidth = 180;
 const pages = ['home', 'datasources', 'FAQ', 'contact']
-
+const pagelinks = ['/', '/datasources', '/faq', '/contact']
 const App = (props) => {
 
 	const { window } = props;
@@ -109,12 +83,32 @@ const App = (props) => {
 	const [sidx, setsidx] = React.useState(0);
 	const hLIC = (event, idx) => {
 		setsidx(idx);
-		ReactGA.pageview(pages[idx]);
+		// ReactGA.pageview(pages[idx]);
 		if (mO) {
 			
 			hMT()};
 
 	};
+	
+	const location = useLocation();
+	
+	
+	useEffect(() => {
+		const pathin = location.pathname
+		ReactGA.initialize('UA-188843494-1');
+		console.log('called GA UA-188843494-1');
+		if (pagelinks.indexOf(pathin) >-1) 
+			{setsidx(pagelinks.indexOf(location.pathname));
+			console.log('sending ' + pages[pagelinks.indexOf(location.pathname)]+  ' to google');
+			ReactGA.pageview(pages[pagelinks.indexOf(location.pathname)]);
+			}
+		else
+			{
+			console.log('sending ' + pathin + ' to google');
+			ReactGA.pageview(pathin);
+			};
+	}, [location]);
+
 
 	const drawer = (
 		<div>
@@ -124,6 +118,7 @@ const App = (props) => {
 			<List>
 				<ListItem 
 					button key='Home'
+					component={Link} to='/'
 					selected={sidx === 0} 
 					onClick={(event) => hLIC(event,0)} >
 					<ListItemIcon>
@@ -132,7 +127,8 @@ const App = (props) => {
 					<ListItemText primary='Home' />
 				</ListItem>
 				<ListItem 
-					button key='Data Sources' 
+					button key='Data Sources'
+					component={Link} to='/datasources'
 					selected={sidx === 1}  
 					onClick={(event) => hLIC(event, 1)}>
 					<ListItemIcon>
@@ -141,7 +137,8 @@ const App = (props) => {
 					<ListItemText primary='Data Sources' />
 				</ListItem>
 				<ListItem 
-					button key='FAQ' 
+					button key='FAQ'
+					component={Link} to='/faq'
 					selected={sidx === 2} 
 					onClick={(event) => hLIC(event, 2)}>
 					<ListItemIcon>
@@ -151,6 +148,7 @@ const App = (props) => {
 				</ListItem>
 				<ListItem 
 				button key='Contact' 
+				component={Link} to='/contact'
 				selected={sidx === 3} 
 					onClick={(event) => hLIC(event, 3)}>
 					<ListItemIcon>
@@ -165,12 +163,6 @@ const App = (props) => {
 
 	const container = window !== undefined ? () => window().document.body : undefined;
 
-	useEffect(() => {
-		// Runs once, after mounting
-		ReactGA.initialize('UA-188843494-1');
-		console.log('called GA UA-188843494-1');
-		ReactGA.pageview(pages[0]);
-	}, []);
 
 	return(
 		<div className={classes.root}>
@@ -238,22 +230,34 @@ const App = (props) => {
 				</Hidden>
 			</nav>
 			<div className={classes.content}>
-				<TabPanel sidx={sidx} idx={0}>
-					<div className={classes.toolbar} />						
-					<Home L_KEY={L_LOC} R_KEY={R_LOC} setL_KEY={setL_LOC} setR_KEY={setR_LOC} /> 
-				</TabPanel>
-				<TabPanel sidx={sidx} idx={1}>				
-					<div className={classes.toolbar} />
-					<DSPanels />
-      			</TabPanel>
-				<TabPanel sidx={sidx} idx={2}>
-					<div className={classes.toolbar} />
-					<QAPanels />
-      			</TabPanel>
-					<TabPanel sidx={sidx} idx={3}>
-					<div className={classes.toolbar} />
-					<About />
-      			</TabPanel>
+				<div className={classes.toolbar} />	
+				<Switch location={location}>
+					
+					<Route
+						exact
+						path='/datasources'
+						render={({ match }) => <DSPanels />}
+						key={1}
+					/>
+					<Route
+						exact
+						path='/faq'
+						render={({ match }) => <QAPanels />}
+						key={2}
+					/>
+					<Route
+						exact
+						path='/contact'
+						render={({ match }) => <About />}
+						key={3}
+					/>
+					{/* <Redirect to="/" /> */}
+					<Route
+						path='/'
+						render={({ match }) => <Home L_KEY={L_LOC} R_KEY={R_LOC} setL_KEY={setL_LOC} setR_KEY={setR_LOC} />}
+						key={0}
+					/>
+				</Switch>
 			</div>
 	</div>	
 	);
