@@ -92,12 +92,13 @@ const App = (props) => {
 	
 	const location = useLocation();
 	useEffect(() => {
-		ReactGA.initialize('UA-188843494-1');
+		ReactGA.initialize('UA-188843494-1', { anonymizeIp: true });
+		ReactGA.set({ anonymizeIp: true });
 		console.log('initialised GA UA-188843494-1');
 	}, []);
+
 	useEffect(() => {
 		const pathin = location.pathname
-		ReactGA.initialize('UA-188843494-1');
 		if (pagelinks.indexOf(pathin) >-1) 
 			{setsidx(pagelinks.indexOf(location.pathname));
 			console.log('sending ' + pages[pagelinks.indexOf(location.pathname)]+  ' to google');
