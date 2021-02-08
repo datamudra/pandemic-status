@@ -21,7 +21,7 @@ import Home from "./components/Home";
 import QAPanels from "./components/QAPanels";
 import DSPanels from "./components/DSpanels";
 import About from "./components/About";
-import { Link, Route, Redirect, Switch, useLocation } from 'react-router-dom';
+import { Link, Route, Switch, useLocation } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -91,12 +91,13 @@ const App = (props) => {
 	};
 	
 	const location = useLocation();
-	
-	
+	useEffect(() => {
+		ReactGA.initialize('UA-188843494-1');
+		console.log('initialised GA UA-188843494-1');
+	}, []);
 	useEffect(() => {
 		const pathin = location.pathname
 		ReactGA.initialize('UA-188843494-1');
-		console.log('called GA UA-188843494-1');
 		if (pagelinks.indexOf(pathin) >-1) 
 			{setsidx(pagelinks.indexOf(location.pathname));
 			console.log('sending ' + pages[pagelinks.indexOf(location.pathname)]+  ' to google');
@@ -251,7 +252,6 @@ const App = (props) => {
 						render={({ match }) => <About />}
 						key={3}
 					/>
-					{/* <Redirect to="/" /> */}
 					<Route
 						path='/'
 						render={({ match }) => <Home L_KEY={L_LOC} R_KEY={R_LOC} setL_KEY={setL_LOC} setR_KEY={setR_LOC} />}

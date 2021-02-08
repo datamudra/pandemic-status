@@ -1,6 +1,7 @@
 import { Chip, Grid, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
 import DashCard from './DashCard';
+import { Helmet } from 'react-helmet'
 
 const useStyles = makeStyles(() => ({
     
@@ -13,6 +14,11 @@ const AllTime = (props) => {
     const { l, r } = props;
     const classes = useStyles();
     return (
+        <React.Fragment>
+            <Helmet>
+                <title>All Time Historic Analysis</title>
+                <meta name="description" content="Compare the pandemic between locations. Get insight from the full historic picture" />
+            </Helmet>
         <Grid container direction='row' spacing={1} >
             <Grid item xs={12} >
                 <Typography component='div' align='center'>
@@ -65,6 +71,7 @@ const AllTime = (props) => {
             </Grid>
         
         </Grid> 
+    </React.Fragment>
 
     );
 };

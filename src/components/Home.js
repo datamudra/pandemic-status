@@ -114,10 +114,6 @@ const Home = (props) =>  {
     else {setR_KEY(locKey);}
     setnewLoc(locPlace);
     toggleDrawer(false);
-    // ReactGA.event({
-    //   category: 'Search',
-    //   action: newLoc,
-    // });
     ReactGA.pageview('Search/'+newLoc);
   }; 
  

@@ -7,8 +7,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Grid } from "@material-ui/core";
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
-
-
+import { Helmet } from 'react-helmet'
 
 const useStyles = makeStyles((theme) => ({
    hl1: {
@@ -27,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
     
 }));
 
-
 const QAPanels = () => {
 
     const classes = useStyles();
@@ -38,6 +36,11 @@ const QAPanels = () => {
     };
 
     return (
+        <React.Fragment>
+            <Helmet>
+                <title>FAQ</title>
+                <meta name="description" content="Common queries about this website and the data" />
+            </Helmet>
         <div className={classes.root}>
             <Accordion expanded={expd === 1} onChange={hChng(1)}>
                 <AccordionSummary className={classes.root}
@@ -189,6 +192,7 @@ const QAPanels = () => {
                 </AccordionDetails>
             </Accordion>
         </div>
+        </React.Fragment>
     );
 }
 

@@ -2,7 +2,7 @@ import { Chip, Grid, Paper, Typography } from '@material-ui/core';
 import React from 'react';
 import LineChart from "./LineChart";
 import { makeStyles } from '@material-ui/core/styles';
-
+import { Helmet } from 'react-helmet'
 
 const useStyles = makeStyles(() => ({
    paper: {
@@ -18,6 +18,11 @@ const Trend21 = (props) => {
     const classes = useStyles();
 
     return (
+	<React.Fragment>
+		<Helmet>
+			<title>Trends In The Last 3 Weeks</title>
+			<meta name="description" content="Compare the pandemic between locations. Charts showing the curves for key facts" />
+		</Helmet>
 		<Grid container direction='row' spacing={1}>
 			<Grid item xs={12} >
 				<Typography component='div' align='center'>
@@ -74,6 +79,7 @@ const Trend21 = (props) => {
 				</Paper>
 			</Grid> 
 		</Grid>
+	</React.Fragment>
    );
 };
 

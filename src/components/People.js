@@ -1,18 +1,32 @@
-import { Chip, Grid, Typography } from '@material-ui/core';
+import { Chip, Grid, Typography, makeStyles} from '@material-ui/core';
 import React from 'react';
 import DashCard from './DashCard';
+import { Helmet } from 'react-helmet'
 
+const useStyles = makeStyles((theme) => ({
+     chipRow: {
+        marginTop: 4,
+    },
+
+}));
 const People = (props) => {
 
     const { l, r } = props;
-    
+    const classes = useStyles();
+
     return (
+        <React.Fragment>
+            <Helmet>
+                <title>Demographic Analysis</title>
+                <meta name="description" content="Get more insight into the pandemic. Contrast and compare country level demographic data" />
+            </Helmet>
         <Grid container direction='row' spacing={1} >
-            <Grid item xs={12} >
+            <Grid item xs={12} className={classes.chipRow} >
                 <Typography component='div' align='center'>
-                    <Chip
+                    <Chip 
                         label={'Country level demographic data'}
                         variant='outlined'
+                        size='small'
                     />
                 </Typography>
             </Grid>
@@ -77,6 +91,7 @@ const People = (props) => {
             </Grid>
            
         </Grid> 
+        </React.Fragment>
             );
 };
 

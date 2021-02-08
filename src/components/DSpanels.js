@@ -2,6 +2,7 @@ import React from "react";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Card, CardContent, Chip, Grid } from "@material-ui/core";
+import { Helmet } from 'react-helmet'
 
 const useStyles = makeStyles((theme) => ({
    
@@ -24,6 +25,11 @@ const DSPanels = () => {
     const classes = useStyles();
 
     return (
+        <React.Fragment>
+            <Helmet>
+                <title>Data Sources</title>
+                <meta name="description" content="Data is refreshed daily. These are the sources of that data." />
+            </Helmet>
         <Grid container className={classes.root} direction='row' justify='center' spacing={1}>
             <Grid item xs={12}>
                 <Typography component='div' align='center' >
@@ -145,6 +151,7 @@ const DSPanels = () => {
                  
             </Grid>        
        </Grid>
+       </React.Fragment>
        
     );
 }

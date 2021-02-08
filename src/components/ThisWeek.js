@@ -2,9 +2,15 @@ import { Chip, Grid, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
 import DashCard from './DashCard';
 import RestoreIcon from '@material-ui/icons/Restore';
+import { Helmet } from 'react-helmet'
 
 const useStyles = makeStyles((theme) => ({
-    tChip: { backgroundColor: 'transparent', },
+    tChip: {
+        backgroundColor: 'transparent', 
+    },
+    chipRow: {
+        marginTop: 4,
+    },
 
 }));
 
@@ -14,11 +20,17 @@ const ThisWeek = (props) => {
     const classes = useStyles();
 
     return (
+        <React.Fragment>
+            <Helmet>
+                <title>Pandemic Check &amp; Compare</title>
+                <meta name="description" content="A powerful website to check and compare the current status of the pandemic in any two places in the world. Choose from over 4500 locations to get the latest details. Datamudra provides clarity through simple facts." />
+            </Helmet>
        <Grid container spacing={0}>
-            <Grid item xs={12} >
+            <Grid item xs={12} className={classes.chipRow}>
                 <Typography component='div' align='center'>
                     <Chip
-                        label={'7 days period ('+m.wr+')'}
+                        size='small'
+                        label={'7 day period ('+m.wr+')'}
                         variant='outlined'
                     />
                 </Typography>
@@ -70,6 +82,7 @@ const ThisWeek = (props) => {
                             icon={<RestoreIcon />}
                             label={m.ut}
                             variant='outlined'
+                            size='small'
                         />
                     </Typography>
                 </Grid> 
@@ -77,6 +90,7 @@ const ThisWeek = (props) => {
         </Grid> 
            
         </Grid>
+    </React.Fragment>
 
     );
 };
