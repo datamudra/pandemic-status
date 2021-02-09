@@ -10,10 +10,7 @@ import useStickySWR from "../hooks/useStickySWR";
 import { FixedSizeList as List } from 'react-window';
 import ReactGA from 'react-ga';
 
-
-
-const API_ROOT_URL = 'https://raw.githubusercontent.com/datamudra/api/master/data';
-
+const API_ROOT_URL = 'https://api.datamudra.com/data';
 
 const useStyles = makeStyles((theme) => ({
   
