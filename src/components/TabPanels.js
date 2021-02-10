@@ -1,13 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, lazy , Suspense} from "react";
 import { makeStyles} from '@material-ui/core/styles';
-import Trend21 from "./Trend21";
-import AllTime from "./AllTime";
-import ThisWeek from "./ThisWeek";
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import People from "./People";
-
+import ThisWeek from "./ThisWeek";
 import {
     Switch,
     Route,
@@ -15,7 +11,11 @@ import {
     useLocation,
 
 } from "react-router-dom";
+import { CircularProgress } from "@material-ui/core";
 
+const People = lazy(() => import("./People"));
+const Trend21 = lazy(() => import("./Trend21"));
+const AllTime = lazy(() => import("./AllTime"));
 
 function a11yProps(index) {
     return {
@@ -35,11 +35,6 @@ const TabPanels = (props) => {
     const { left, right, meta } = props;
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
-   
-    // const handleChange = (event, newValue) => {
-    //     setValue(newValue);
-    // };
-
     const location = useLocation();
 
     useEffect(() => {
@@ -79,19 +74,25 @@ const TabPanels = (props) => {
                     exact
                    path={tabs[1]}
                     key={1}>
-                <Trend21 l={left} r={right} m={meta} /> 
+                    <Suspense fallback={<CircularProgress />} >
+                        <Trend21 l={left} r={right} m={meta} /> 
+                    </Suspense>
                 </Route>
                 <Route
                     exact
                     path={tabs[2]}
                     key={2}>
-                    <AllTime l={left} r={right} m={meta} /> 
+                    <Suspense fallback={<CircularProgress />}>
+                        <AllTime l={left} r={right} m={meta} /> 
+                    </Suspense>
                 </Route>
                 <Route
                     exact
                     path={tabs[3]}
                     key={3}>
-                    <People l={left} r={right} m={meta} /> 
+                    <Suspense fallback={<CircularProgress />}>
+                        <People l={left} r={right} m={meta} /> 
+                    </Suspense>
                 </Route>
             </Switch> 
         </div>

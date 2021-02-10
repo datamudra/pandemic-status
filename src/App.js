@@ -1,5 +1,8 @@
-import React, { useEffect }  from "react";
-import { AppBar, Chip,  Grid,  Toolbar, Typography} from "@material-ui/core";
+import React, { useEffect, lazy, Suspense }  from "react";
+import ReactGA from 'react-ga';
+import { Link, Route, Switch, useLocation } from 'react-router-dom';
+
+import { AppBar, Chip,  CircularProgress,  Grid,  Toolbar, Typography} from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -15,14 +18,12 @@ import HomeIcon from '@material-ui/icons/Home';
 import HelpIcon from '@material-ui/icons/Help';
 import DataUsageIcon from '@material-ui/icons/DataUsage';
 import InfoIcon from '@material-ui/icons/Info';
-import ReactGA from 'react-ga';
 
 import Home from "./components/Home";
-import QAPanels from "./components/QAPanels";
-import DSPanels from "./components/DSpanels";
-import About from "./components/About";
-import { Link, Route, Switch, useLocation } from 'react-router-dom';
 
+const QAPanels = lazy(() => import("./components/QAPanels"));
+const DSPanels = lazy(() => import("./components/DSpanels"));
+const About = lazy(() => import("./components/About"));
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -83,7 +84,6 @@ const App = (props) => {
 	const [sidx, setsidx] = React.useState(0);
 	const hLIC = (event, idx) => {
 		setsidx(idx);
-		// ReactGA.pageview(pages[idx]);
 		if (mO) {
 			
 			hMT()};
@@ -238,19 +238,19 @@ const App = (props) => {
 					<Route
 						exact
 						path='/datasources'
-						render={({ match }) => <DSPanels />}
+						render={({ match }) => (<Suspense fallback={<CircularProgress />}> <DSPanels /> </Suspense> )}
 						key={1}
 					/>
 					<Route
 						exact
 						path='/faq'
-						render={({ match }) => <QAPanels />}
+						render={({ match }) => (<Suspense fallback={<CircularProgress />}> <QAPanels /> </Suspense> ) }
 						key={2}
 					/>
 					<Route
 						exact
 						path='/contact'
-						render={({ match }) => <About />}
+						render={({ match }) => (<Suspense fallback={<CircularProgress />}> <About /> </Suspense> ) }
 						key={3}
 					/>
 					<Route
