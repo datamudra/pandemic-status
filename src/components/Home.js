@@ -244,7 +244,7 @@ const Home = (props) =>  {
         (<span>
         <Grid container direction='row' justify='center' className={classes.chipRow} >
           <Chip className={classes.chipL}
-            avatar={<Avatar variant='square' src={L_DATA.iso === '0' ? process.env.PUBLIC_URL + '/flags/0l.png' : process.env.PUBLIC_URL +`/flags/${L_DATA.iso}.png`} />}
+            avatar={<Avatar variant='square' width='24' height='24' src={L_DATA.iso === '0' ? process.env.PUBLIC_URL + '/flags/0l.png' : process.env.PUBLIC_URL +`/flags/${L_DATA.iso}.png`} />}
               label={L_DATA.loc}
               variant='outlined'
               clickable
@@ -258,7 +258,7 @@ const Home = (props) =>  {
           </Typography>
           </Grid>
           <Chip className={classes.chipR}
-            avatar={<Avatar variant='square' src={R_DATA.iso === '0' ? process.env.PUBLIC_URL + '/flags/0r.png' : process.env.PUBLIC_URL + `/flags/${R_DATA.iso}.png` } />}
+            avatar={<Avatar variant='square' width='24' height='24'  src={R_DATA.iso === '0' ? process.env.PUBLIC_URL + '/flags/0r.png' : process.env.PUBLIC_URL + `/flags/${R_DATA.iso}.png` } />}
               label={R_DATA.loc}
               variant='outlined'
               clickable

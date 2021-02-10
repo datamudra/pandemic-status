@@ -94,19 +94,19 @@ const App = (props) => {
 	useEffect(() => {
 		ReactGA.initialize('UA-188843494-1', { anonymizeIp: true });
 		ReactGA.set({ anonymizeIp: true });
-		console.log('initialised GA UA-188843494-1');
+		// console.log('initialised GA UA-188843494-1');
 	}, []);
 
 	useEffect(() => {
 		const pathin = location.pathname
 		if (pagelinks.indexOf(pathin) >-1) 
 			{setsidx(pagelinks.indexOf(location.pathname));
-			console.log('sending ' + pages[pagelinks.indexOf(location.pathname)]+  ' to google');
+			// console.log('sending ' + pages[pagelinks.indexOf(location.pathname)]+  ' to google');
 			ReactGA.pageview(pages[pagelinks.indexOf(location.pathname)]);
 			}
 		else
 			{
-			console.log('sending ' + pathin + ' to google');
+			// console.log('sending ' + pathin + ' to google');
 			ReactGA.pageview(pathin);
 			};
 	}, [location]);
@@ -115,7 +115,7 @@ const App = (props) => {
 	const drawer = (
 		<div>
 			<div/>
-			<img src={process.env.PUBLIC_URL + '/logos.png'} alt='Datamudra' width='170' />		
+			<img src={process.env.PUBLIC_URL + '/logos.png'} alt='Datamudra' width='170' height='53' />		
 			<Divider />
 			<List>
 				<ListItem 
